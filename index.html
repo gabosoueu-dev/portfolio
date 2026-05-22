@@ -905,7 +905,7 @@ html[data-hero-treatment="grid"] .case-hero-ink::before {
     <p class="case-plain-p">Registry Direct holds a database of individuals, companies, and trusts with all their associated details.</p>
     <p class="case-plain-p">Under Australian law, companies and trusts on the platform are legally required to verify the identity of shareholders before accepting any investments. Historically, this process was entirely manual — managed outside the platform through document submissions.</p>
 
-    <figure class="case-plain-figure">
+    <figure class="case-plain-figure--bare">
       <img src="images/aml-1.webp" alt="GreenID verification UI showing investor details with verified individuals and PEP screening status." />
     </figure>
 
@@ -921,7 +921,7 @@ html[data-hero-treatment="grid"] .case-hero-ink::before {
     <p class="case-plain-p">Given the low volume of international investors, we decided a manual verification path (scanned documents) was defensible, even though some clients pushed for a fully electronic solution. The cost of a second API for a small subset was hard to justify.</p>
     <p class="case-plain-p">Verification failures added another design challenge. They can be legitimate (a name that genuinely doesn't match) or benign (a recently changed address). The design had to give clients context to make a judgement call, and a path to manually override or re-verify.</p>
 
-    <figure class="case-plain-figure">
+    <figure class="case-plain-figure--bare">
       <img src="images/aml-form.webp" alt="AML/CTF form with ID type, ID number, and file attachment fields." />
     </figure>
 
@@ -1056,7 +1056,10 @@ html[data-hero-treatment="grid"] .case-hero-ink::before {
     <p class="case-plain-p">Strip too much away and the tool becomes a black box they can't trust. Leave too much in and you've just moved the complexity from an API config file to a screen.</p>
 
     <figure class="case-plain-figure">
-      <image-slot id="case-feedzai-1" placeholder="Source configuration screen — API connection setup." shape="rect" style="aspect-ratio: 16 / 9; width: 100%;"></image-slot>
+      <video style="width: 100%; display: block; background: #f0f0f0;" autoplay muted loop>
+        <source src="images/feedzai-source.mov" type="video/quicktime">
+        Your browser doesn't support embedded videos.
+      </video>
     </figure>
 
     <p class="case-plain-p">The second challenge was the data itself. Banks connecting to external providers for the first time, identity services, sanctions lists, credit bureaus, were getting back responses in completely different formats. Analysts needed a way to transform and normalise that data before it could flow through a workflow, without writing SQL or code from scratch.</p>

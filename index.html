@@ -1,0 +1,1278 @@
+<!doctype html>
+<html lang="en" data-palette="sunny" data-hero-treatment="solid" data-typeface="modern">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gabriel Reyes, Product Designer</title>
+<style>
+/* =========================================================
+   Design tokens — Gabo Portfolio
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --paper:        #F1ECE0;
+  --paper-2:      #E8E2D2;
+  --paper-3:      #FBF8F1;
+  --ink:          #111318;
+  --ink-2:        #3A3D44;
+  --ink-3:        #6B6E76;
+  --rule:         rgba(17, 19, 24, 0.12);
+  --rule-strong:  rgba(17, 19, 24, 0.32);
+
+  --blue:         #2B3CE0;
+  --blue-deep:    #1F2BB0;
+  --yellow:       #FFDA70;
+  --yellow-deep:  #E6B83A;
+  --sky:          #1FAFE8;
+  --teal:         #3FC4C5;
+
+  --on-blue:      #F1ECE0;
+  --on-yellow:    #111318;
+  --on-sky:       #111318;
+  --on-teal:      #111318;
+  --on-paper:     #111318;
+  --on-ink:       #F1ECE0;
+
+  --link:         var(--ink);
+  --link-hover:   var(--blue);
+  --focus-ring:   var(--blue);
+
+  --font-sans:  'Inter', 'Helvetica Neue', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --t-mono:      0.6875rem;
+  --t-meta:      0.8125rem;
+  --t-body-sm:   0.9375rem;
+  --t-body:      1.0625rem;
+  --t-body-lg:   1.1875rem;
+  --t-lead:      1.5rem;
+  --t-h4:        1.75rem;
+  --t-h3:        2.25rem;
+  --t-h2:        3.5rem;
+  --t-h1:        6rem;
+  --t-display:   10rem;
+
+  --lh-tight:    1.02;
+  --lh-snug:     1.15;
+  --lh-body:     1.6;
+  --lh-loose:    1.75;
+
+  --tr-display:  -0.025em;
+  --tr-heading:  -0.015em;
+  --tr-body:     0;
+  --tr-mono:     0.08em;
+
+  --s-1:   4px;  --s-2:   8px;  --s-3:   12px; --s-4:   16px;
+  --s-6:   24px; --s-8:   32px; --s-12:  48px;  --s-16:  64px;
+  --s-24:  96px; --s-32:  128px; --s-48: 192px; --s-64:  256px;
+
+  --col-narrow:  560px;
+  --col-text:    640px;
+  --col-wide:    1080px;
+  --gutter:      32px;
+
+  --r-0:  0px;
+  --r-1:  2px;
+  --r-pill: 999px;
+
+  --border-hair:   1px solid var(--rule);
+  --border-rule:   1px solid var(--ink);
+  --shadow-none:   none;
+  --shadow-block:  8px 8px 0 0 var(--ink);
+
+  --ease-std:    cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast:    120ms;
+  --dur-base:    180ms;
+  --dur-slow:    280ms;
+
+  /* Palette tokens */
+  --tw-hero-bg:     #ffda70;
+  --tw-on-hero:     var(--ink);
+  --tw-accent:      var(--blue);
+  --tw-contact-bg:  var(--blue);
+  --tw-contact-fg:  var(--paper);
+  --tw-contact-dot: var(--yellow);
+}
+
+/* =========================================================
+   Base element styles
+   ========================================================= */
+html, body {
+  margin: 0; padding: 0;
+  background: #ffffff;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--tr-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+* { box-sizing: border-box; }
+img { display: block; max-width: 100%; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: var(--tr-heading);
+  line-height: var(--lh-tight);
+  margin: 0;
+  text-wrap: balance;
+}
+h1 { font-size: var(--t-h1); letter-spacing: var(--tr-display); }
+h2 { font-size: var(--t-h2); }
+h3 { font-size: var(--t-h3); }
+h4 { font-size: var(--t-h4); }
+
+p {
+  margin: 0 0 var(--s-6) 0;
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  max-width: var(--col-text);
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-thickness var(--dur-fast) var(--ease-std),
+              text-decoration-color var(--dur-fast) var(--ease-std),
+              color var(--dur-fast) var(--ease-std);
+}
+a:hover {
+  color: var(--link-hover);
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--link-hover);
+}
+
+::selection { background: var(--blue); color: var(--on-blue); }
+
+/* =========================================================
+   Palette tweak variants
+   ========================================================= */
+html[data-palette="sunny"] {
+  --tw-hero-bg: #ffda70; --tw-on-hero: #111318;
+  --tw-accent: #2B3CE0;
+  --tw-contact-bg: #2B3CE0; --tw-contact-fg: #F1ECE0; --tw-contact-dot: #ffda70;
+}
+html[data-palette="sky"] {
+  --tw-hero-bg: #475acb; --tw-on-hero: #F1ECE0;
+  --tw-accent: #ffda70;
+  --tw-contact-bg: #111318; --tw-contact-fg: #F1ECE0; --tw-contact-dot: #ffda70;
+}
+html[data-palette="cream"] {
+  --tw-hero-bg: #E8E2D2; --tw-on-hero: #111318;
+  --tw-accent: #111318;
+  --tw-contact-bg: #111318; --tw-contact-fg: #F1ECE0; --tw-contact-dot: #ffda70;
+}
+html[data-palette="bold"] {
+  --tw-hero-bg: #111318; --tw-on-hero: #F1ECE0;
+  --tw-accent: #ffda70;
+  --tw-contact-bg: #2B3CE0; --tw-contact-fg: #F1ECE0; --tw-contact-dot: #ffda70;
+}
+
+/* Typeface tweak */
+html[data-typeface="modern"]   { --font-sans: 'Inter', 'Helvetica Neue', system-ui, sans-serif; }
+html[data-typeface="serif"]    { --font-sans: 'Fraunces', Georgia, 'Times New Roman', serif; }
+html[data-typeface="geometric"]{ --font-sans: 'Space Grotesk', system-ui, sans-serif; }
+html[data-typeface="serif"] .hero-block-statement p,
+html[data-typeface="serif"] .case-hero-title,
+html[data-typeface="serif"] .contact-skills { letter-spacing: -0.04em; }
+html[data-typeface="geometric"] .hero-block-statement p,
+html[data-typeface="geometric"] .case-hero-title,
+html[data-typeface="geometric"] .contact-skills { letter-spacing: -0.055em; }
+
+/* =========================================================
+   SPA view switching
+   ========================================================= */
+.view { display: none; }
+.view.is-active { display: block; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.view.is-active { animation: fadeIn 0.32s var(--ease-std) both; }
+
+/* =========================================================
+   SITE BANNER — full-width top strip
+   ========================================================= */
+.site-banner {
+  background: #ffffff;
+  padding: 32px 36px 18px 36px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(14px, 1.4vw, 18px);
+  letter-spacing: -0.005em;
+  line-height: 1;
+  color: var(--ink);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: baseline;
+  gap: 24px;
+}
+.site-banner-name {
+  justify-self: start;
+  color: var(--ink) !important;
+  text-decoration: none;
+  cursor: pointer;
+  background: none; border: 0; padding: 0;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(14px, 1.4vw, 18px);
+  letter-spacing: -0.005em;
+  transition: opacity var(--dur-fast) var(--ease-std);
+}
+.site-banner-name:hover { opacity: 0.6; }
+.site-banner-role { justify-self: center; }
+.site-banner-loc {
+  justify-self: end;
+  display: inline-flex; align-items: baseline; gap: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.site-banner-loc .loc-weather {
+  display: inline;
+  white-space: nowrap;
+}
+.site-banner-loc .loc-weather-icon {
+  width: 1.05em; height: 1.05em;
+  vertical-align: -0.18em;
+  margin-right: 4px;
+}
+.site-banner-loc .loc-time { font-feature-settings: "tnum"; }
+@media (max-width: 720px) {
+  .site-banner {
+    grid-template-columns: auto auto;
+    grid-template-areas: "name loc" "role role";
+    gap: 6px 12px;
+    padding: 16px 20px 12px 20px;
+  }
+  .site-banner-name { grid-area: name; }
+  .site-banner-loc  { grid-area: loc; }
+  .site-banner-role { grid-area: role; justify-self: start; }
+}
+
+/* =========================================================
+   HERO BLOCK
+   ========================================================= */
+.hero-block-wrap {
+  padding: 0 32px 32px 32px;
+  background: #ffffff;
+}
+.hero-block {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: calc(100vh - 120px);
+  background: var(--tw-hero-bg);
+  position: relative;
+  overflow: hidden;
+}
+.hero-block-mark {
+  position: absolute;
+  top: 36px;
+  right: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: fit-content;
+}
+.hero-block-square {
+  width: 342px;
+  height: 12px;
+  background: var(--tw-on-hero);
+}
+.hero-block-square--half {
+  width: 342px;
+  height: 4px;
+  background: var(--tw-on-hero);
+  margin: 2px 0 0;
+}
+.hero-block-contact {
+  margin-top: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--tw-on-hero);
+}
+.hero-block-contact a,
+.hero-block-contact a:link,
+.hero-block-contact a:visited,
+.hero-block-contact a:active,
+.hero-block-contact a:hover {
+  color: var(--tw-on-hero) !important;
+  text-decoration: none;
+  transition: opacity var(--dur-fast) var(--ease-std);
+}
+.hero-block-contact a:hover { opacity: 0.6; }
+.hero-block-contact .ext-icon {
+  display: inline-block;
+  width: 0.85em; height: 0.85em;
+  vertical-align: -0.08em;
+  margin-left: 4px;
+  opacity: 0.7;
+}
+.hero-block-statement {
+  position: absolute;
+  left: 40px; right: 40px;
+  bottom: 40px; top: 50%;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+}
+.hero-block-statement p {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(28px, 5.6vw, 88px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  color: var(--tw-on-hero);
+  max-width: 1100px;
+  text-wrap: balance;
+}
+
+/* Hero decoration layer */
+.hero-block-deco {
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+html[data-hero-treatment="solid"] .hero-block-deco { display: none; }
+html[data-hero-treatment="corner"] .hero-block-deco::before {
+  content: '';
+  position: absolute;
+  bottom: 36px; left: 40px;
+  width: 96px; height: 96px;
+  background: var(--paper);
+}
+html[data-palette="bold"][data-hero-treatment="corner"] .hero-block-deco::before,
+html[data-palette="sky"][data-hero-treatment="corner"] .hero-block-deco::before { background: #F1ECE0; }
+html[data-hero-treatment="stripes"] .hero-block-deco {
+  background-image: repeating-linear-gradient(
+    0deg, transparent 0, transparent 32px,
+    rgba(0,0,0,0.10) 32px, rgba(0,0,0,0.10) 33px
+  );
+}
+html[data-palette="bold"][data-hero-treatment="stripes"] .hero-block-deco,
+html[data-palette="sky"][data-hero-treatment="stripes"] .hero-block-deco {
+  background-image: repeating-linear-gradient(0deg, transparent 0, transparent 32px, rgba(255,255,255,0.12) 32px, rgba(255,255,255,0.12) 33px);
+}
+html[data-hero-treatment="grid"] .hero-block-deco {
+  background-image: radial-gradient(circle, rgba(0,0,0,0.22) 1.6px, transparent 2px);
+  background-size: 32px 32px;
+  background-position: 16px 16px;
+}
+html[data-palette="bold"][data-hero-treatment="grid"] .hero-block-deco,
+html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.22) 1.6px, transparent 2px);
+}
+
+@media (max-width: 720px) {
+  .hero-block-wrap { padding: 0 16px 16px 16px; }
+  .hero-block { aspect-ratio: 4 / 5; max-height: calc(100vh - 80px); }
+  .hero-block-mark { top: 20px; right: 20px; gap: 12px; }
+  .hero-block-square { width: 200px; height: 10px; }
+  .hero-block-square--half { width: 200px; height: 3px; margin: 2px 0 0; }
+  .hero-block-contact { font-size: 12px; }
+  .hero-block-statement { left: 20px; right: 20px; bottom: 24px; top: 40%; }
+  .hero-block-statement p { font-size: clamp(22px, 7vw, 44px); letter-spacing: -0.03em; }
+}
+
+/* =========================================================
+   CASE STUDIES LIST
+   ========================================================= */
+.case-list {
+  padding: 40px 32px 64px 32px;
+}
+@media (max-width: 720px) { .case-list { padding: 24px 16px 40px 16px; } }
+.case-list-title {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 24px 0;
+  line-height: 1;
+}
+.case-list-items {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.case-list-items button {
+  background: none; border: 0; padding: 0;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: -0.02em;
+  color: #111318 !important;
+  text-align: left;
+  cursor: pointer;
+  line-height: 1.2;
+  transition: opacity var(--dur-fast) var(--ease-std);
+}
+.case-list-items button:hover { opacity: 0.55; }
+@media (max-width: 720px) {
+  .case-list-title { font-size: 22px; }
+  .case-list-items button { font-size: 18px; }
+}
+
+/* =========================================================
+   CONTACT — full-bleed
+   ========================================================= */
+.contact {
+  background: var(--tw-contact-bg);
+  color: var(--tw-contact-fg);
+  margin-top: 64px;
+}
+.contact-inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 112px 64px 128px 64px;
+}
+@media (max-width: 720px) { .contact-inner { padding: 72px 24px 88px 24px; } }
+.contact-skills {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(28px, 5.6vw, 88px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  max-width: 1100px;
+  text-wrap: balance;
+  margin: 0;
+}
+.contact-dot { color: var(--tw-contact-dot); }
+@media (max-width: 720px) {
+  .contact-skills { font-size: clamp(22px, 7vw, 44px); letter-spacing: -0.03em; }
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.site-footer {
+  background: var(--ink); color: var(--paper);
+  padding: 36px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+@media (max-width: 720px) { .site-footer { padding: 28px 24px; } }
+.footer-mark {
+  font-family: var(--font-sans); font-weight: 500;
+  font-size: 17px; letter-spacing: -0.015em;
+}
+.footer-meta {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.06em; color: rgba(241,236,224,0.6);
+}
+.brand-dot  { color: var(--yellow); }
+.dot-sep    { color: rgba(241,236,224,0.4); margin: 0 8px; }
+
+/* =========================================================
+   CASE STUDY HERO
+   ========================================================= */
+.case-hero {
+  position: relative; width: 100%; overflow: hidden;
+  border: 32px solid #ffffff;
+  box-sizing: border-box;
+}
+@media (max-width: 720px) { .case-hero { border-width: 16px; } }
+
+.case-hero::before {
+  content: ''; position: absolute; inset: 0; z-index: 1;
+  pointer-events: none;
+}
+html[data-hero-treatment="solid"] .case-hero::before { display: none; }
+html[data-hero-treatment="corner"] .case-hero::before {
+  width: 50%; height: 50%; inset: auto auto 0 0;
+  background: var(--paper);
+}
+html[data-hero-treatment="stripes"] .case-hero::before {
+  background-image: repeating-linear-gradient(
+    0deg, transparent 0, transparent 32px,
+    rgba(17,19,24,0.06) 32px, rgba(17,19,24,0.06) 33px
+  );
+}
+html[data-hero-treatment="grid"] .case-hero::before {
+  background-image: radial-gradient(circle, rgba(17,19,24,0.12) 1.6px, transparent 2px);
+  background-size: 28px 28px;
+}
+html[data-hero-treatment="corner"] .case-hero-blue::before,
+html[data-hero-treatment="corner"] .case-hero-ink::before { background: #F1ECE0; }
+html[data-hero-treatment="stripes"] .case-hero-blue::before,
+html[data-hero-treatment="stripes"] .case-hero-ink::before {
+  background-image: repeating-linear-gradient(0deg, transparent 0, transparent 32px, rgba(255,255,255,0.10) 32px, rgba(255,255,255,0.10) 33px);
+}
+html[data-hero-treatment="grid"] .case-hero-blue::before,
+html[data-hero-treatment="grid"] .case-hero-ink::before {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.22) 1.6px, transparent 2px);
+}
+
+.case-hero-inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 40px;
+  min-height: min(720px, calc(100vh - 80px));
+  position: static; z-index: 2;
+}
+@media (max-width: 720px) {
+  .case-hero-inner { padding: 24px 20px; min-height: min(560px, calc(100vh - 60px)); }
+}
+
+.case-hero-top {
+  position: absolute; top: 40px; right: 40px;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+  text-align: right; z-index: 2;
+}
+@media (max-width: 720px) { .case-hero-top { top: 24px; right: 20px; } }
+
+.case-hero-blue   { background: var(--blue);   color: var(--paper); }
+.case-hero-ink    { background: var(--ink);     color: var(--paper); }
+.case-hero-yellow { background: var(--yellow);  color: var(--ink);   }
+
+.case-hero-num {
+  display: block; white-space: nowrap;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.case-hero-title {
+  position: absolute;
+  left: 40px; right: 40px; bottom: 40px; top: 50%;
+  display: flex; align-items: flex-end;
+  font-family: var(--font-sans); font-weight: 900;
+  font-size: clamp(28px, 5.6vw, 88px);
+  letter-spacing: -0.035em; line-height: 0.98;
+  margin: 0; max-width: 1100px; text-wrap: balance;
+  z-index: 2;
+  animation: fadeUp 0.6s var(--ease-std) both;
+}
+@media (max-width: 720px) {
+  .case-hero-title {
+    left: 20px; right: 20px; bottom: 24px; top: 40%;
+    font-size: clamp(22px, 7vw, 44px); letter-spacing: -0.03em;
+  }
+}
+.case-hero-shape { display: none; }
+
+/* =========================================================
+   CASE STUDY PLAIN LAYOUT
+   ========================================================= */
+.case-plain {
+  max-width: 760px; margin: 0;
+  padding: 80px 40px 96px 72px;
+}
+@media (max-width: 720px) { .case-plain { padding: 56px 20px 72px 36px; } }
+
+.case-plain-p {
+  font-family: var(--font-sans); font-weight: 700;
+  font-size: 17px; line-height: 1.5;
+  color: var(--ink); text-align: left;
+  margin: 0 0 6px 0;
+}
+.case-plain-h {
+  font-family: var(--font-sans); font-weight: 800;
+  font-size: 17px; line-height: 1.5;
+  color: var(--ink); text-align: left;
+  margin: 32px 0 6px 0;
+}
+.case-plain-figure {
+  margin: 40px 0;
+  margin-left: -72px;
+  width: min(100vw, 1920px);
+  max-width: min(100vw, 1920px);
+}
+@media (max-width: 720px) { .case-plain-figure { margin-left: -36px; } }
+.case-plain-figure image-slot,
+.case-plain-figure img {
+  width: 100%; display: block; border: none;
+}
+.case-plain-figure--bare {
+  margin: 24px 0;
+  margin-left: 0;
+  width: auto; max-width: 100%;
+}
+.case-plain-figure--bare img {
+  width: auto; max-width: 100%;
+  height: auto; border: none;
+}
+.case-plain-logo {
+  margin: 24px 0 6px 0;
+}
+.case-plain-logo img {
+  display: block; height: 56px; width: auto;
+}
+
+.case-plain-next {
+  margin-top: 96px; padding: 32px 0 8px 0;
+  border-top: 1px solid var(--rule);
+  border-left: none; border-right: none; border-bottom: none;
+  display: flex; align-items: center; justify-content: space-between;
+  background: none; width: 100%; cursor: pointer; color: var(--ink);
+  font-family: var(--font-sans);
+  transition: opacity var(--dur-fast) var(--ease-std);
+}
+.case-plain-next:hover { opacity: 0.65; }
+.case-plain-next-title {
+  font-weight: 800; font-size: clamp(22px, 3vw, 32px);
+  letter-spacing: -0.015em; text-align: left;
+}
+.case-plain-next-arrow { width: 28px; height: 28px; flex-shrink: 0; }
+
+/* =========================================================
+   TWEAKS PANEL
+   ========================================================= */
+.tweaks-panel {
+  position: fixed; bottom: 20px; right: 20px; z-index: 200;
+  width: 304px;
+  background: #FBF8F1; color: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 18px 18px 16px;
+  font-family: var(--font-sans);
+  box-shadow: 8px 8px 0 0 var(--ink);
+  display: none;
+  animation: fadeUp 0.25s var(--ease-std) both;
+}
+.tweaks-panel.is-open { display: block; }
+.tweaks-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 12px; margin-bottom: 14px;
+  border-bottom: 1px solid var(--ink);
+}
+.tweaks-title { font-weight: 500; font-size: 16px; letter-spacing: -0.01em; }
+.tweaks-title-dot { color: var(--blue); }
+.tweaks-close {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  width: 22px; height: 22px; display: inline-flex;
+  align-items: center; justify-content: center;
+  color: var(--ink-2); font-family: var(--font-mono); font-size: 16px;
+}
+.tweaks-close:hover { color: var(--blue); }
+.tweaks-section { margin-bottom: 14px; }
+.tweaks-section:last-child { margin-bottom: 4px; }
+.tweaks-section-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 8px;
+}
+.tweaks-swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.tweaks-swatch {
+  position: relative; height: 44px; cursor: pointer;
+  border: 1px solid var(--rule); padding: 0; background: transparent;
+  transition: transform var(--dur-fast) var(--ease-std), border-color var(--dur-fast) var(--ease-std);
+  overflow: hidden;
+}
+.tweaks-swatch:hover { transform: translateY(-1px); }
+.tweaks-swatch[aria-pressed="true"] { border: 2px solid var(--ink); }
+.tweaks-swatch .sw-fill { position: absolute; inset: 0; }
+.tweaks-swatch .sw-dot { position: absolute; top: 4px; right: 4px; width: 8px; height: 3px; }
+.tweaks-icons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.tweaks-icon {
+  position: relative; height: 44px;
+  background: #F1ECE0; border: 1px solid var(--rule);
+  cursor: pointer; padding: 0; overflow: hidden;
+  transition: border-color var(--dur-fast) var(--ease-std), transform var(--dur-fast) var(--ease-std);
+}
+.tweaks-icon:hover { transform: translateY(-1px); }
+.tweaks-icon[aria-pressed="true"] { border: 2px solid var(--ink); }
+.tweaks-icon .icon-fill { position: absolute; inset: 6px; background: #ffda70; }
+.tweaks-icon[data-val="corner"] .icon-fill::after {
+  content: ''; position: absolute; left: 4px; bottom: 4px;
+  width: 12px; height: 12px; background: #F1ECE0;
+}
+.tweaks-icon[data-val="stripes"] .icon-fill {
+  background-image: linear-gradient(#ffda70, #ffda70),
+    repeating-linear-gradient(0deg, transparent 0 5px, rgba(0,0,0,0.18) 5px 6px);
+}
+.tweaks-icon[data-val="grid"] .icon-fill {
+  background-color: #ffda70;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.28) 1.2px, transparent 1.5px);
+  background-size: 6px 6px;
+}
+.tweaks-radio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.tweaks-radio button {
+  padding: 8px 6px; cursor: pointer;
+  background: transparent; border: 1px solid var(--rule);
+  font-family: var(--font-sans); font-size: 12px;
+  color: var(--ink); letter-spacing: -0.005em;
+  transition: background var(--dur-fast) var(--ease-std),
+              border-color var(--dur-fast) var(--ease-std),
+              color var(--dur-fast) var(--ease-std);
+}
+.tweaks-radio button:hover { border-color: var(--ink); }
+.tweaks-radio button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.tweaks-radio button[data-val="serif"]     { font-family: 'Fraunces', Georgia, serif; }
+.tweaks-radio button[data-val="geometric"] { font-family: 'Space Grotesk', system-ui, sans-serif; }
+.tweaks-toggle {
+  position: fixed; bottom: 20px; right: 20px; z-index: 199;
+  padding: 10px 14px; border-radius: 999px;
+  background: var(--ink); color: var(--paper);
+  border: 0; cursor: pointer;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  display: none;
+}
+.tweaks-toggle.is-visible { display: inline-flex; }
+</style>
+<script src="image-slot.js"></script>
+</head>
+<body>
+
+<!-- ============================================================
+     HOME VIEW
+     ============================================================ -->
+<div class="view is-active" id="view-home" data-screen-label="Home">
+
+  <!-- Banner -->
+  <div class="site-banner">
+    <button class="site-banner-name" onclick="showHome()">Gabriel Reyes</button>
+    <span class="site-banner-role">(Product Designer)</span>
+    <span class="site-banner-loc">
+      <span class="loc-name">Torquay, VIC Australia</span>
+      <span class="loc-weather" id="banner-weather" aria-label="Current weather in Torquay">
+        <svg class="loc-weather-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+        </svg>
+        <span class="loc-weather-temp">--°</span>
+      </span>
+      <span class="loc-time" id="banner-time">--:--</span>
+    </span>
+  </div>
+
+  <!-- Hero block -->
+  <div class="hero-block-wrap">
+    <div class="hero-block">
+      <div class="hero-block-deco" aria-hidden="true"></div>
+      <div class="hero-block-mark">
+        <div class="hero-block-square"></div>
+        <div class="hero-block-contact">
+          <a href="mailto:gabosoueu@gmail.com">gabosoueu@gmail.com</a>
+          <a href="tel:+61422330674">0422 330 674</a>
+          <a href="https://www.linkedin.com/in/gabreyesdesigner/" target="_blank" rel="noopener">
+            LinkedIn
+            <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+        <div class="hero-block-square--half"></div>
+      </div>
+      <div class="hero-block-statement">
+        <p>Hi, I'm Gabe. I believe in prototyping fast with AI and putting ideas in front of people. This portfolio? Built it this morning!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case studies list -->
+  <section class="case-list" id="work">
+    <h2 class="case-list-title">Case studies</h2>
+    <ul class="case-list-items">
+      <li><button onclick="showCase('feedzai')">Feedzai</button></li>
+      <li><button onclick="showCase('payments')">Helping clients pay shareholders without the paperwork</button></li>
+      <li><button onclick="showCase('aml')">Giving compliance teams one place to verify investors</button></li>
+      <li><button onclick="showCase('capital')">Letting companies run capital raises end to end</button></li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <p class="contact-skills">end-to-end product design <span class="contact-dot">/</span> rapid prototyping <span class="contact-dot">/</span> wireframes <span class="contact-dot">/</span> concept design <span class="contact-dot">/</span> ux design <span class="contact-dot">/</span> ui design <span class="contact-dot">/</span> design systems <span class="contact-dot">/</span> accessibility</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-mark">gabriel reyes<span class="brand-dot">.</span></div>
+    <div class="footer-meta">
+      <span>© 2026 Gabriel Reyes</span>
+      <span class="dot-sep">·</span>
+      <span>Melbourne, AU</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ============================================================
+     CASE STUDY 01 — DIVIDEND & DISTRIBUTION PAYMENTS
+     ============================================================ -->
+<div class="view" id="view-payments">
+
+  <!-- Banner (same on every case study page) -->
+  <div class="site-banner">
+    <button class="site-banner-name" onclick="showHome()">Gabriel Reyes</button>
+    <span class="site-banner-role">(Product Designer)</span>
+    <span class="site-banner-loc">
+      <span class="loc-name">Torquay, VIC Australia</span>
+      <span class="loc-weather" aria-label="Current weather">
+        <svg class="loc-weather-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle></svg>
+        <span class="loc-weather-temp">--°</span>
+      </span>
+      <span class="loc-time">--:--</span>
+    </span>
+  </div>
+
+  <header class="case-hero case-hero-blue">
+    <div class="case-hero-inner">
+      <div class="case-hero-top">
+        <span class="case-hero-num">01 / Case study</span>
+      </div>
+      <h1 class="case-hero-title">Helping clients pay shareholders without the paperwork.</h1>
+      <div class="case-hero-shape" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <section class="case-plain">
+    <p class="case-plain-p">Registry Direct is a share registry where companies and trusts can self-manage their registers.</p>
+    <p class="case-plain-p">One of the requests from clients was to allow them to manage a Dividend or Distribution payment, enabling them to generate payments for their shareholders.</p>
+
+    <figure class="case-plain-figure">
+      <img src="images/payment-dash.webp" alt="Registry Direct payment details screen for a scheduled distribution payment." />
+    </figure>
+
+    <h3 class="case-plain-h">What capability were we aiming to build?</h3>
+    <p class="case-plain-p">Companies and trusts often pay their shareholders a percentage of their earnings. The idea behind this feature was to allow our clients to easily calculate each individual payment for each shareholder.</p>
+    <p class="case-plain-p">To receive a payment as a shareholder, you need to own shares on a specified date. The more shares you own, the larger the payment, since your payment is based on each unit you own.</p>
+    <p class="case-plain-p">It was easy for us to determine how many units a shareholder owned and how much their final payment would be, based on the price per unit.</p>
+    <p class="case-plain-p">Ultimately, the company/trust wanted to be able to easily calculate how much each shareholder would receive and transfer that amount to the shareholder's bank account.</p>
+
+    <h3 class="case-plain-h">Some of the challenges</h3>
+    <p class="case-plain-p">From my initial conversations with stakeholders, all we had to do was multiply the number of units a shareholder owned by the pence per unit that our client entered in the setup form.</p>
+
+    <figure class="case-plain-figure case-plain-figure--bare">
+      <img src="images/amount.webp" alt="Equation: 2000 shares owned times 0.394 price per unit equals $788 payment amount." />
+    </figure>
+
+    <p class="case-plain-p">Although that calculation is correct, there are many other factors to consider in what we call a "Payment cycle."</p>
+    <p class="case-plain-p">The "Payment cycle" was a way of setting a start and end point for the entire process, from setting up a payment for all your shareholders to actually making the payment to their bank accounts.</p>
+    <p class="case-plain-p">Some other factors we needed to consider were how much tax needed to be withheld from each shareholder, depending on their country of residence or whether they had supplied a TFN. Also, if the shareholder has a bank account, did we send them a cheque, or did we withhold the full amount?</p>
+    <p class="case-plain-p">Many of these variables had to be left up to our clients, so we needed to give them the flexibility to choose what the system did based on the shareholders' settings.</p>
+    <p class="case-plain-p">Our biggest challenge was to provide this feature for trusts so they could pay a distribution. Trusts need to be able to define each component of a payment, and each component has a different set of properties that affect each shareholder's individual payments.</p>
+    <p class="case-plain-p">Since this was beyond our expertise, we contracted Ernst and Young to help us define each possible component and how each of them works. For example, for some components, you are meant to withhold tax, while for others, you are not. Additionally, for some components, there may be a treaty between countries where you calculate a smaller percentage of tax.</p>
+    <p class="case-plain-p">A single payment can have multiple components, so stitching it all together to calculate the correct amount for someone to be paid and their tax withheld wasn't easy.</p>
+
+    <h3 class="case-plain-h">Design and build process</h3>
+    <p class="case-plain-p">We started by allowing only companies to pay dividends since it was a more straightforward challenge with fewer unknowns. Once we perfected the dividend payment cycle, we were ready to move on to distribution payments for trusts.</p>
+    <p class="case-plain-p">The challenge here was to ensure that we applied all the tax rules properly, based on what E&amp;Y had provided us through their documentation. It was essentially a series of spreadsheets that needed to be distilled into rules that the development team could incorporate into the payment cycle.</p>
+    <p class="case-plain-p">Since this was a complex feature, we initially released it to a designated set of clients to gather feedback and iron out any bugs.</p>
+    <p class="case-plain-p">We also organised some training sessions for some of our major clients to help them become more comfortable with the process.</p>
+
+    <button class="case-plain-next" onclick="showCase('aml')" aria-label="Next case study: Giving compliance teams one place to verify investors">
+      <span class="case-plain-next-title">Giving compliance teams one place to verify investors</span>
+      <svg class="case-plain-next-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-mark">gabriel reyes<span class="brand-dot">.</span></div>
+    <div class="footer-meta">
+      <span>© 2026 Gabriel Reyes</span>
+      <span class="dot-sep">·</span>
+      <span>Melbourne, AU</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ============================================================
+     CASE STUDY 02 — AML & KYC
+     ============================================================ -->
+<div class="view" id="view-aml">
+
+  <div class="site-banner">
+    <button class="site-banner-name" onclick="showHome()">Gabriel Reyes</button>
+    <span class="site-banner-role">(Product Designer)</span>
+    <span class="site-banner-loc">
+      <span class="loc-name">Torquay, VIC Australia</span>
+      <span class="loc-weather" aria-label="Current weather">
+        <svg class="loc-weather-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle></svg>
+        <span class="loc-weather-temp">--°</span>
+      </span>
+      <span class="loc-time">--:--</span>
+    </span>
+  </div>
+
+  <header class="case-hero case-hero-ink">
+    <div class="case-hero-inner">
+      <div class="case-hero-top">
+        <span class="case-hero-num">02 / Case study</span>
+      </div>
+      <h1 class="case-hero-title">Giving compliance teams one place to verify investors.</h1>
+      <div class="case-hero-shape" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <section class="case-plain">
+    <p class="case-plain-p">Registry Direct holds a database of individuals, companies, and trusts with all their associated details.</p>
+    <p class="case-plain-p">Under Australian law, companies and trusts on the platform are legally required to verify the identity of shareholders before accepting any investments. Historically, this process was entirely manual — managed outside the platform through document submissions.</p>
+
+    <figure class="case-plain-figure">
+      <img src="images/aml-1.webp" alt="GreenID verification UI showing investor details with verified individuals and PEP screening status." />
+    </figure>
+
+    <h3 class="case-plain-h">What capability were we aiming to build?</h3>
+    <p class="case-plain-p">Our clients needed a streamlined way to verify new shareholders without running a separate compliance workflow outside the platform.</p>
+    <p class="case-plain-p">The goal was to give them a single in-platform path to satisfy AML and CTF requirements prior to accepting an investment, covering both Australian/NZ investors via an automated identity check, and international investors via a structured manual review.</p>
+
+    <h3 class="case-plain-h">Some of the challenges</h3>
+    <div class="case-plain-logo">
+      <img src="images/greenid-gbg.webp" alt="greenID by GBG logo" />
+    </div>
+    <p class="case-plain-p">We evaluated multiple providers before settling on GreenID by GBG, the most stable API with the best documentation. But GreenID only covers Australian and NZ investors, so we needed a fallback for international shareholders.</p>
+    <p class="case-plain-p">Given the low volume of international investors, we decided a manual verification path (scanned documents) was defensible, even though some clients pushed for a fully electronic solution. The cost of a second API for a small subset was hard to justify.</p>
+    <p class="case-plain-p">Verification failures added another design challenge. They can be legitimate (a name that genuinely doesn't match) or benign (a recently changed address). The design had to give clients context to make a judgement call, and a path to manually override or re-verify.</p>
+
+    <figure class="case-plain-figure">
+      <img src="images/aml-form.webp" alt="AML/CTF form with ID type, ID number, and file attachment fields." />
+    </figure>
+
+    <h3 class="case-plain-h">Design and build process</h3>
+    <p class="case-plain-p">We deliberately waited on prototyping until we fully understood what the GreenID API could and couldn't do. Once we had a clear picture, we built prototypes and ran facilitated sessions with a select group of clients.</p>
+    <p class="case-plain-p">These sessions surfaced edge cases around partial verification states we hadn't anticipated, which fed directly back into the design before release.</p>
+    <p class="case-plain-p">The end result was that clients could now manage all AML and CTF requirements within Registry Direct prior to accepting investments, compliant with Australian law, with no need to manage multiple systems.</p>
+
+    <button class="case-plain-next" onclick="showCase('capital')" aria-label="Next case study: Letting companies run capital raises end to end">
+      <span class="case-plain-next-title">Letting companies run capital raises end to end</span>
+      <svg class="case-plain-next-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-mark">gabriel reyes<span class="brand-dot">.</span></div>
+    <div class="footer-meta">
+      <span>© 2026 Gabriel Reyes</span>
+      <span class="dot-sep">·</span>
+      <span>Melbourne, AU</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ============================================================
+     CASE STUDY 03 — CAPITAL RAISING
+     ============================================================ -->
+<div class="view" id="view-capital">
+
+  <div class="site-banner">
+    <button class="site-banner-name" onclick="showHome()">Gabriel Reyes</button>
+    <span class="site-banner-role">(Product Designer)</span>
+    <span class="site-banner-loc">
+      <span class="loc-name">Torquay, VIC Australia</span>
+      <span class="loc-weather" aria-label="Current weather">
+        <svg class="loc-weather-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle></svg>
+        <span class="loc-weather-temp">--°</span>
+      </span>
+      <span class="loc-time">--:--</span>
+    </span>
+  </div>
+
+  <header class="case-hero case-hero-yellow">
+    <div class="case-hero-inner">
+      <div class="case-hero-top">
+        <span class="case-hero-num">03 / Case study</span>
+      </div>
+      <h1 class="case-hero-title">Letting companies run capital raises end to end.</h1>
+      <div class="case-hero-shape" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <section class="case-plain">
+    <p class="case-plain-p">Registry Direct's clients (companies and trusts) regularly release new investment offerings to the public.</p>
+    <p class="case-plain-p">Historically, this was managed through PDF forms and manual payment coordination. A client would create a PDF describing the opportunity, attach a paper form, and then manually reconcile each investment against bank transfers.</p>
+    <p class="case-plain-p">Since our clients' investors were already on the platform, we had an opportunity to replace that workflow with a digital application form that could handle investment amounts, investor details, and payment in one place.</p>
+
+    <figure class="case-plain-figure">
+      <img src="images/cap-raising-1.webp" alt="Rubix capital raising application form, Payment Options step with bank details and application progress sidebar." />
+    </figure>
+
+    <h3 class="case-plain-h">What capability were we aiming to build?</h3>
+    <p class="case-plain-p">The goal was a white-label form builder where clients had full control over branding, rules and minimums without needing us for every change request.</p>
+    <p class="case-plain-p">Investors should be able to apply, supply their details, and pay in a single flow, while clients had a back-office to manage the offering and track applications.</p>
+
+    <h3 class="case-plain-h">Some of the challenges</h3>
+    <p class="case-plain-p">Our first iteration generated forms on demand. A client asked, we built it and shared the URL. This was unsustainable. Change requests were too frequent and too fiddly to manage at scale.</p>
+    <p class="case-plain-p">Handling existing investors was the more significant challenge. Most people investing in a raise were already shareholders. Allowing them to apply without creating duplicate records required careful identity matching logic, which shaped how we designed the investor-facing flow.</p>
+    <p class="case-plain-p">Payment management added complexity. Clients needed to mark when money arrived, reissue invoices, and generate receipts. We had to design a back-office workflow that matched how these clients actually operated.</p>
+
+    <h3 class="case-plain-h">Design and build process</h3>
+    <p class="case-plain-p">We ran extensive consultations before designing anything. The variety of ways different companies run capital raises was wider than we'd assumed. Some required strict minimums, others soft; some collected payment upfront, others invoiced later.</p>
+    <p class="case-plain-p">That variety drove the decision to build a form builder rather than fixed templates. We used Rubix as the underlying framework and iterated heavily on the builder UI.</p>
+    <p class="case-plain-p">The first version was powerful but intimidating. Subsequent rounds focused on reducing cognitive load for first-time users, simplifying the configuration surface and improving defaults.</p>
+
+    <button class="case-plain-next" onclick="showCase('feedzai')" aria-label="Next case study: Feedzai">
+      <span class="case-plain-next-title">Feedzai</span>
+      <svg class="case-plain-next-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-mark">gabriel reyes<span class="brand-dot">.</span></div>
+    <div class="footer-meta">
+      <span>© 2026 Gabriel Reyes</span>
+      <span class="dot-sep">·</span>
+      <span>Melbourne, AU</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ============================================================
+     CASE STUDY 04 — FEEDZAI
+     ============================================================ -->
+<div class="view" id="view-feedzai">
+
+  <div class="site-banner">
+    <button class="site-banner-name" onclick="showHome()">Gabriel Reyes</button>
+    <span class="site-banner-role">(Product Designer)</span>
+    <span class="site-banner-loc">
+      <span class="loc-name">Torquay, VIC Australia</span>
+      <span class="loc-weather" aria-label="Current weather">
+        <svg class="loc-weather-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle></svg>
+        <span class="loc-weather-temp">--°</span>
+      </span>
+      <span class="loc-time">--:--</span>
+    </span>
+  </div>
+
+  <header class="case-hero case-hero-ink">
+    <div class="case-hero-inner">
+      <div class="case-hero-top">
+        <span class="case-hero-num">04 / Case study</span>
+      </div>
+      <h1 class="case-hero-title">Feedzai.</h1>
+      <div class="case-hero-shape" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <section class="case-plain">
+    <p class="case-plain-p">Some of the world's largest banks, NAB, ANZ, UBS, and Standard Chartered, use Feedzai to prevent financial crime and automate customer verification.</p>
+    <p class="case-plain-p">In V1 of the Feedzai Orchestration Solution, building and configuring these automated workflows required an engineer. Every new data source, every logic change, every tweak to a decision rule meant a ticket, a handoff, and a wait.</p>
+
+    <h3 class="case-plain-h">What capability were we aiming to build?</h3>
+    <p class="case-plain-p">When a bank onboards a new customer, they need to verify their identity, screen them against sanctions and PEP lists, assess fraud risk, and make a decision, often in seconds.</p>
+    <p class="case-plain-p">FOS automated that process by connecting data sources and orchestrating the logic between them. But in V1, the only people who could build and modify those workflows were engineers. Business analysts, the people who actually understood the compliance rules and verification logic, had no way to act on that knowledge directly.</p>
+    <p class="case-plain-p">The goal for V2 was to give analysts a visual, low-code canvas to configure data sources, build workflow logic, and publish changes, without writing a single line of code or raising an engineering ticket.</p>
+
+    <h3 class="case-plain-h">Some of the challenges</h3>
+    <p class="case-plain-p">The biggest challenge wasn't building the canvas. It was deciding how much complexity to expose.</p>
+    <p class="case-plain-p">Engineers working in V1 had full control. Every parameter, every authentication detail, every transformation was explicit. Business analysts didn't need that level of control, but they did need enough. A BA configuring a sanctions check still needs to understand what data is being sent, what comes back, and what happens when it fails.</p>
+    <p class="case-plain-p">Strip too much away and the tool becomes a black box they can't trust. Leave too much in and you've just moved the complexity from an API config file to a screen.</p>
+
+    <figure class="case-plain-figure">
+      <image-slot id="case-feedzai-1" placeholder="Source configuration screen — API connection setup." shape="rect" style="aspect-ratio: 16 / 9; width: 100%;"></image-slot>
+    </figure>
+
+    <p class="case-plain-p">The second challenge was the data itself. Banks connecting to external providers for the first time, identity services, sanctions lists, credit bureaus, were getting back responses in completely different formats. Analysts needed a way to transform and normalise that data before it could flow through a workflow, without writing SQL or code from scratch.</p>
+
+    <figure class="case-plain-figure">
+      <image-slot id="case-feedzai-2" placeholder="Transformation node being configured in the canvas." shape="rect" style="aspect-ratio: 16 / 9; width: 100%;"></image-slot>
+    </figure>
+
+    <p class="case-plain-p">Finally, trust. Engineers could read a stack trace and debug a failed workflow. Analysts couldn't. If something went wrong in a live verification run, they needed enough visibility to understand what happened and fix it, without calling an engineer.</p>
+
+    <figure class="case-plain-figure">
+      <image-slot id="case-feedzai-3" placeholder="Workflow run log — node-level execution detail and error state." shape="rect" style="aspect-ratio: 16 / 9; width: 100%;"></image-slot>
+    </figure>
+
+    <h3 class="case-plain-h">Design and build process</h3>
+    <p class="case-plain-p">We started by mapping what engineers were actually doing in V1, the sequence of steps, the decisions they were making, the mental model they were working from. That became the foundation for the canvas. We weren't designing from scratch; we were making an existing process visible.</p>
+    <p class="case-plain-p">Early prototypes focused on the source configuration flow, the entry point for everything else. If analysts couldn't connect a data source confidently, nothing downstream mattered. We tested with analysts at client institutions and found that the hardest part wasn't the technical fields, it was not knowing whether the connection had worked. Feedback and validation states became a significant design focus.</p>
+
+    <figure class="case-plain-figure">
+      <image-slot id="case-feedzai-4" placeholder="Connection test — success and error confirmation states." shape="rect" style="aspect-ratio: 16 / 9; width: 100%;"></image-slot>
+    </figure>
+
+    <p class="case-plain-p">The canvas itself went through multiple rounds of iteration. Simple linear workflows were intuitive from the start. Branching logic, if/else conditions, parallel sources, layered transformations, was harder to represent without overwhelming first-time users. We introduced progressive disclosure, surfacing advanced options only when needed, so the default experience stayed approachable without sacrificing power for complex use cases.</p>
+    <p class="case-plain-p">Testing and simulation were built directly into the canvas. Before publishing a workflow, analysts could run it against sample data and see exactly which nodes fired, what data passed through, and where failures occurred. This was the trust mechanism. It gave analysts the confidence to publish without needing an engineer to sign off.</p>
+
+    <figure class="case-plain-figure">
+      <image-slot id="case-feedzai-5" placeholder="Simulation panel — sample run with node-level results." shape="rect" style="aspect-ratio: 16 / 9; width: 100%;"></image-slot>
+    </figure>
+
+    <p class="case-plain-p">The result was a platform where business analysts at some of the world's largest financial institutions could go from a compliance requirement to a live, automated verification workflow, without engineering involvement for every change.</p>
+
+    <button class="case-plain-next" onclick="showCase('payments')" aria-label="Next case study: Helping clients pay shareholders without the paperwork">
+      <span class="case-plain-next-title">Helping clients pay shareholders without the paperwork</span>
+      <svg class="case-plain-next-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-mark">gabriel reyes<span class="brand-dot">.</span></div>
+    <div class="footer-meta">
+      <span>© 2026 Gabriel Reyes</span>
+      <span class="dot-sep">·</span>
+      <span>Melbourne, AU</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ============================================================
+     TWEAKS PANEL
+     ============================================================ -->
+<button class="tweaks-toggle" id="tweaks-toggle" aria-label="Open tweaks panel">Tweaks</button>
+<aside class="tweaks-panel" id="tweaks-panel" role="dialog" aria-label="Tweaks">
+  <header class="tweaks-head">
+    <div class="tweaks-title">Tweaks<span class="tweaks-title-dot">.</span></div>
+    <button class="tweaks-close" id="tweaks-close" aria-label="Close tweaks">✕</button>
+  </header>
+
+  <section class="tweaks-section">
+    <div class="tweaks-section-label">Palette</div>
+    <div class="tweaks-swatches" data-key="palette">
+      <button class="tweaks-swatch" data-val="sunny" title="Sunny: yellow + blue">
+        <span class="sw-fill" style="background:#ffda70"></span>
+        <span class="sw-dot" style="background:#2B3CE0"></span>
+      </button>
+      <button class="tweaks-swatch" data-val="sky" title="Sky: blue + yellow">
+        <span class="sw-fill" style="background:#475acb"></span>
+        <span class="sw-dot" style="background:#ffda70"></span>
+      </button>
+      <button class="tweaks-swatch" data-val="cream" title="Cream: restrained">
+        <span class="sw-fill" style="background:#E8E2D2"></span>
+        <span class="sw-dot" style="background:#111318"></span>
+      </button>
+      <button class="tweaks-swatch" data-val="bold" title="Bold: ink + yellow">
+        <span class="sw-fill" style="background:#111318"></span>
+        <span class="sw-dot" style="background:#ffda70"></span>
+      </button>
+    </div>
+  </section>
+
+  <section class="tweaks-section">
+    <div class="tweaks-section-label">Hero treatment</div>
+    <div class="tweaks-icons" data-key="heroTreatment">
+      <button class="tweaks-icon" data-val="solid" title="Solid block"><span class="icon-fill"></span></button>
+      <button class="tweaks-icon" data-val="corner" title="Paper corner"><span class="icon-fill"></span></button>
+      <button class="tweaks-icon" data-val="stripes" title="Stripes"><span class="icon-fill"></span></button>
+      <button class="tweaks-icon" data-val="grid" title="Dotted grid"><span class="icon-fill"></span></button>
+    </div>
+  </section>
+
+  <section class="tweaks-section">
+    <div class="tweaks-section-label">Type voice</div>
+    <div class="tweaks-radio" data-key="typeface">
+      <button data-val="modern" title="Inter">Modern</button>
+      <button data-val="serif" title="Fraunces">Serif</button>
+      <button data-val="geometric" title="Space Grotesk">Geometric</button>
+    </div>
+  </section>
+</aside>
+
+<script>
+// ── SPA navigation ──────────────────────────────────────────────────────────
+function setView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('is-active'));
+  const el = document.getElementById(id);
+  if (el) el.classList.add('is-active');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  // Sync time on newly-visible banners
+  syncAllBanners();
+}
+function showHome()      { setView('view-home'); }
+function showCase(slug)  { setView('view-' + slug); }
+
+// ── Live time (Torquay = Australia/Melbourne) ───────────────────────────────
+function getLocalTime() {
+  try {
+    return new Intl.DateTimeFormat('en-AU', {
+      timeZone: 'Australia/Melbourne',
+      hour: '2-digit', minute: '2-digit', hour12: false
+    }).format(new Date());
+  } catch (_) {
+    const d = new Date();
+    return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+  }
+}
+function syncAllBanners() {
+  const t = getLocalTime();
+  document.querySelectorAll('.loc-time').forEach(el => { el.textContent = t; });
+}
+syncAllBanners();
+setInterval(syncAllBanners, 30 * 1000);
+
+// ── Live Torquay weather via Open-Meteo ────────────────────────────────────
+(function fetchWeather() {
+  function svgFor(code, isDay) {
+    const s = (p) => `<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${p}</g>`;
+    const sun    = s(`<circle cx="12" cy="12" r="4"></circle><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/>`);
+    const moon   = s(`<path d="M20 14.5A8 8 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5z"/>`);
+    const partly = s(`<circle cx="8" cy="9" r="3"></circle><path d="M8 3.5v1.5M3.5 9H5M11.2 5.8l1-1M4.8 13.2l1-1"/><path d="M9 17h8a3 3 0 1 0-1.2-5.76A4 4 0 0 0 9 13a3 3 0 0 0 0 6z"/>`);
+    const cloud  = s(`<path d="M7 18h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.7-1.2A3.5 3.5 0 0 0 7 18z"/>`);
+    const fog    = s(`<path d="M7 15h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.7-1.2A3.5 3.5 0 0 0 7 15z"/><path d="M4 19h16M6 22h12"/>`);
+    const rain   = s(`<path d="M7 14h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.7-1.2A3.5 3.5 0 0 0 7 14z"/><path d="M9 17l-1 3M13 17l-1 3M17 17l-1 3"/>`);
+    const snow   = s(`<path d="M7 14h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.7-1.2A3.5 3.5 0 0 0 7 14z"/><path d="M9 18v3M9 19.5l-1-.5M9 19.5l1-.5M14 18v3M14 19.5l-1-.5M14 19.5l1-.5"/>`);
+    const thunder= s(`<path d="M7 14h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.7-1.2A3.5 3.5 0 0 0 7 14z"/><path d="M12 15l-2 4h3l-1 3"/>`);
+    if (code === 0) return isDay ? sun : moon;
+    if ([1,2,3].includes(code)) return isDay ? partly : cloud;
+    if ([45,48].includes(code)) return fog;
+    if ([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code)) return rain;
+    if ([71,73,75,77,85,86].includes(code)) return snow;
+    if ([95,96,99].includes(code)) return thunder;
+    return cloud;
+  }
+
+  function applyWeather(temp, code, isDay) {
+    const svgContent = svgFor(code, isDay);
+    const tempStr = Math.round(temp) + '°';
+    document.querySelectorAll('.loc-weather').forEach(wrap => {
+      const iconEl = wrap.querySelector('.loc-weather-icon');
+      const tempEl = wrap.querySelector('.loc-weather-temp');
+      if (iconEl) iconEl.outerHTML = `<svg class="loc-weather-icon" viewBox="0 0 24 24" aria-hidden="true">${svgContent}</svg>`;
+      if (tempEl) tempEl.textContent = tempStr;
+    });
+  }
+
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=-38.33&longitude=144.32&current=temperature_2m,weather_code,is_day&timezone=Australia%2FMelbourne';
+  function fetchOnce() {
+    fetch(url, { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(d => {
+        const c = d && d.current;
+        if (c) applyWeather(c.temperature_2m, c.weather_code, c.is_day === 1);
+      })
+      .catch(() => {});
+  }
+  fetchOnce();
+  setInterval(fetchOnce, 15 * 60 * 1000);
+})();
+
+// ── Tweaks panel ────────────────────────────────────────────────────────────
+(function () {
+  const defaults = { palette: 'sunny', heroTreatment: 'solid', typeface: 'modern' };
+  const state = Object.assign({}, defaults);
+  const $panel  = document.getElementById('tweaks-panel');
+  const $toggle = document.getElementById('tweaks-toggle');
+  const $close  = document.getElementById('tweaks-close');
+
+  function apply() {
+    document.documentElement.setAttribute('data-palette',        state.palette);
+    document.documentElement.setAttribute('data-hero-treatment', state.heroTreatment);
+    document.documentElement.setAttribute('data-typeface',       state.typeface);
+    $panel.querySelectorAll('[data-key]').forEach(group => {
+      const key = group.getAttribute('data-key');
+      group.querySelectorAll('[data-val]').forEach(btn => {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-val') === state[key] ? 'true' : 'false');
+      });
+    });
+  }
+
+  $panel.querySelectorAll('[data-key]').forEach(group => {
+    const key = group.getAttribute('data-key');
+    group.querySelectorAll('[data-val]').forEach(btn => {
+      btn.addEventListener('click', () => { state[key] = btn.getAttribute('data-val'); apply(); });
+    });
+  });
+
+  $close.addEventListener('click', () => {
+    $panel.classList.remove('is-open');
+    $toggle.classList.add('is-visible');
+  });
+  $toggle.addEventListener('click', () => {
+    $panel.classList.add('is-open');
+    $toggle.classList.remove('is-visible');
+  });
+
+  apply();
+  setTimeout(() => { $toggle.classList.add('is-visible'); }, 800);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Radii</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 36px 40px; min-height: 220px; box-sizing: border-box; display: flex; gap: 36px; align-items: center; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .shape { width: 90px; height: 90px; background: var(--ink); }
+  .pill  { width: 140px; height: 56px; background: var(--ink); border-radius: 999px; }
+  .name  { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+  .meta  { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); }
+  .note  { margin-left: 24px; max-width: 240px; font-size: 13px; line-height: 1.5; color: var(--ink-2); }
+</style>
+</head>
+<body>
+  <div class="item">
+    <div class="shape" style="border-radius:0;"></div>
+    <span class="name">r-0</span><span class="meta">0px</span>
+  </div>
+  <div class="item">
+    <div class="shape" style="border-radius:2px;"></div>
+    <span class="name">r-1</span><span class="meta">2px</span>
+  </div>
+  <div class="item">
+    <div class="pill"></div>
+    <span class="name">r-pill</span><span class="meta">999px</span>
+  </div>
+  <p class="note">Cards, blocks, sections — always r-0. Pills are reserved for buttons and tags. No radii in between.</p>
+</body>
+</html>

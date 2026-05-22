@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Block colour pairings</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 0; min-height: 220px; box-sizing: border-box; display: grid; grid-template-columns: repeat(3, 1fr); }
+  .block { padding: 22px 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; box-sizing: border-box; }
+  .blue { background: var(--blue); color: var(--on-blue); }
+  .yellow { background: var(--yellow); color: var(--on-yellow); }
+  .ink { background: var(--ink); color: var(--on-ink); }
+  .label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; }
+  .big   { font-size: 32px; font-weight: 500; letter-spacing: -0.015em; line-height: 1; }
+  .meta  { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; opacity: 0.8; }
+</style>
+</head>
+<body>
+  <div class="block blue"><span class="label">01 / Case</span><div><div class="big">Onboarding</div><div class="meta" style="margin-top:8px;">paper on blue</div></div></div>
+  <div class="block yellow"><span class="label">02 / About</span><div><div class="big">Hi.</div><div class="meta" style="margin-top:8px;">ink on yellow</div></div></div>
+  <div class="block ink"><span class="label">03 / Contact</span><div><div class="big">Say hi.</div><div class="meta" style="margin-top:8px;">paper on ink</div></div></div>
+</body>
+</html>

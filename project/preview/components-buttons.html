@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 36px 40px; min-height: 220px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px; }
+  .row { display: flex; gap: 14px; align-items: center; }
+  .what { width: 90px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  .arrow { width: 12px; height: 12px; }
+  .btn-blue { background: var(--blue); color: var(--paper); }
+  .btn-blue:hover { background: var(--blue-deep); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <span class="what">Primary</span>
+    <a class="btn" href="#">View case studies <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    <a class="btn btn-blue" href="#">Get in touch</a>
+  </div>
+  <div class="row">
+    <span class="what">Ghost</span>
+    <a class="btn btn--ghost" href="#">Download CV</a>
+    <a class="btn btn--ghost" href="#">View on GitHub <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+  </div>
+  <div class="row">
+    <span class="what">Disabled</span>
+    <button class="btn" disabled style="opacity:0.35; cursor:not-allowed;">Sending…</button>
+  </div>
+</body>
+</html>

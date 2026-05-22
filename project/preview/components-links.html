@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Links &amp; states</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 30px 40px; min-height: 220px; box-sizing: border-box; }
+  .row { display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--rule); }
+  .row:first-child { border-top: 0; }
+  .what { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  .ex { font-size: 17px; }
+  /* Static demos of states (no JS needed) */
+  .a-rest { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  .a-hover { color: var(--blue); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--blue); }
+  .a-visited { color: var(--ink-2); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--ink-3); }
+  .a-external::after { content: " ↗"; font-family: var(--font-mono); }
+</style>
+</head>
+<body>
+  <div class="row"><span class="what">Rest</span><span class="ex"><span class="a-rest">Read the onboarding case study</span></span></div>
+  <div class="row"><span class="what">Hover</span><span class="ex"><span class="a-hover">Read the onboarding case study</span></span></div>
+  <div class="row"><span class="what">Visited</span><span class="ex"><span class="a-visited">Read the onboarding case study</span></span></div>
+  <div class="row"><span class="what">External</span><span class="ex"><span class="a-rest a-external">github.com/gabo</span></span></div>
+</body>
+</html>

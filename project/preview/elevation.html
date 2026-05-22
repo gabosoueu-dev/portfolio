@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Elevation &amp; rules</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 32px 40px; min-height: 280px; box-sizing: border-box; }
+  h5 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 16px 0; font-weight: 400; }
+  .row { display: flex; align-items: center; gap: 28px; }
+  .demo { width: 180px; height: 80px; position: relative; }
+  .card { background: var(--paper-3); border: 1px solid var(--rule); width: 100%; height: 100%; padding: 10px 14px; box-sizing: border-box; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+  .block { background: var(--blue); width: 100%; height: 100%; transition: transform 250ms cubic-bezier(0.2,0.8,0.2,1); position: relative; z-index: 2; }
+  .shadow { position: absolute; inset: 0; background: var(--ink); transform: translate(8px, 8px); z-index: 1; }
+  .demo:hover .block { transform: translate(8px, 8px); }
+  .hair { width: 140px; border-top: 1px solid var(--rule); }
+  .rule { width: 140px; border-top: 1px solid var(--ink); }
+  .label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-top: 8px; }
+  .col { display: flex; flex-direction: column; align-items: flex-start; }
+</style>
+</head>
+<body>
+  <h5>Elevation — none. Depth = whitespace + blocks.</h5>
+  <div class="row">
+    <div class="col">
+      <div class="demo"><div class="shadow"></div><div class="block"></div></div>
+      <span class="label">block offset · hover</span>
+    </div>
+    <div class="col">
+      <div class="hair"></div>
+      <span class="label">hair · 1px @ 12%</span>
+    </div>
+    <div class="col">
+      <div class="rule"></div>
+      <span class="label">rule · 1px ink</span>
+    </div>
+    <div class="col">
+      <div class="card">CARD = HAIR + LABEL</div>
+      <span class="label">paper-3 surface</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gabriel Reyes, Product Designer</title>
+<link rel="stylesheet" href="colors_and_type.css"/>
+<style>
+  /* Additional fonts for typeface tweak */
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700;800;900&family=Inter:wght@800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+  /* =========================================================
+     Gabriel Reyes — Portfolio (SPA: home + 3 case studies)
+     ========================================================= */
+
+  html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
+  body { background: #ffffff; color: var(--ink); }
+  * { box-sizing: border-box; }
+  img { display: block; max-width: 100%; }
+
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .dot-sep { color: var(--ink-3); margin: 0 8px; }
+
+  /* =========================================================
+     HERO BLOCK — full sky-blue rectangle with paper margins
+     ========================================================= */
+  .hero-block-wrap {
+    padding: 32px;
+    background: #ffffff;
+  }
+  .hero-block-banner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: baseline;
+    gap: 24px;
+    padding: 0 4px 18px 4px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: clamp(14px, 1.4vw, 18px);
+    letter-spacing: -0.005em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .hero-block-banner-name { justify-self: start; }
+  .hero-block-banner-role { justify-self: center; }
+  .hero-block-banner-loc {
+    justify-self: end;
+    display: inline-flex; align-items: baseline; gap: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+  .hero-block-banner-loc .loc-weather {
+    display: inline;
+    white-space: nowrap;
+  }
+  .hero-block-banner-loc .loc-weather-icon {
+    width: 1.05em; height: 1.05em;
+    vertical-align: -0.18em;
+    margin-right: 4px;
+    transform: none;
+  }
+  .hero-block-banner-loc .loc-time { font-feature-settings: "tnum"; }
+  @media (max-width: 720px) {
+    .hero-block-banner {
+      grid-template-columns: auto auto;
+      grid-template-areas: "name loc" "role role";
+      gap: 6px 12px;
+      padding: 0 0 14px 0;
+    }
+    .hero-block-banner-name { grid-area: name; }
+    .hero-block-banner-loc { grid-area: loc; }
+    .hero-block-banner-role { grid-area: role; justify-self: start; }
+  }
+  .hero-block {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    max-height: calc(100vh - 120px);
+    background: #ffda70;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-block-mark {
+    position: absolute;
+    top: 36px;
+    right: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: fit-content;
+  }
+  .hero-block-square {
+    width: 200%;
+    height: 12px;
+    background: var(--ink);
+  }
+  .hero-block-square--half {
+    width: 200%;
+    height: 6px;
+    background: var(--ink);
+    margin-top: 14px;
+  }
+  .hero-block-name {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    line-height: 1;
+    margin-top: 7px;
+    text-transform: capitalize;
+  }
+  .hero-block-role {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.015em;
+    text-transform: capitalize;
+    color: var(--ink);
+    opacity: 0.6;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .hero-block-name-stack { display: flex; flex-direction: column; align-items: flex-start; }
+
+  .hero-block-contact {
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .hero-block-contact a,
+  .hero-block-contact a:link,
+  .hero-block-contact a:visited,
+  .hero-block-contact a:active,
+  .hero-block-contact a:hover {
+    color: #111318 !important;
+    text-decoration: none;
+    transition: opacity var(--dur-fast) var(--ease-std);
+  }
+  .hero-block-contact a:hover { opacity: 0.6; }
+  .hero-block-contact .ext-icon {
+    display: inline-block;
+    width: 0.85em; height: 0.85em;
+    vertical-align: -0.08em;
+    margin-left: 4px;
+    opacity: 0.7;
+  }
+  .hero-block-contact .city { opacity: 0.6; }
+  @media (max-width: 720px) {
+    .hero-block-contact { font-size: 12px; margin-top: 2px; }
+  }
+
+  .hero-block-statement {
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    top: 50%;
+    display: flex;
+    align-items: flex-end;
+    pointer-events: none;
+  }
+  .hero-block-statement p {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-weight: 900;
+    font-size: clamp(28px, 5.6vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    color: var(--tw-on-hero);
+    max-width: 1100px;
+    text-wrap: balance;
+  }
+  html[data-typeface="serif"] .hero-block-statement p { letter-spacing: -0.04em; }
+  html[data-typeface="geometric"] .hero-block-statement p { letter-spacing: -0.055em; }
+  @media (max-width: 720px) {
+    .hero-block-wrap { padding: 16px; }
+    .hero-block { aspect-ratio: 4 / 5; max-height: calc(100vh - 80px); }
+    .hero-block-mark { top: 20px; right: 20px; gap: 12px; }
+    .hero-block-square { height: 10px; }
+    .hero-block-square--half { height: 5px; margin-top: 10px; }
+    .hero-block-name { font-size: 18px; }
+    .hero-block-statement { left: 20px; right: 20px; bottom: 24px; top: 40%; }
+    .hero-block-statement p { font-size: clamp(22px, 7vw, 44px); letter-spacing: -0.03em; }
+  }
+
+  /* ----- SPA view switching ----- */
+  .view { display: none; }
+  .view.is-active { display: block; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .view.is-active { animation: fadeIn 0.32s var(--ease-std) both; }
+
+  /* =========================================================
+     NAV (shared across views)
+     ========================================================= */
+  .site-nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 64px;
+    background: rgba(241, 236, 224, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .brand {
+    font-family: var(--font-sans); font-weight: 500; font-size: 19px;
+    letter-spacing: -0.015em; color: var(--ink); text-decoration: none;
+    background: none; border: 0; cursor: pointer; padding: 0;
+  }
+  .brand-dot { color: var(--blue); }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-link {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-3); text-decoration: none;
+    background: none; border: 0; cursor: pointer; padding: 0;
+    font-weight: 400;
+    transition: color var(--dur-fast) var(--ease-std);
+  }
+  .nav-link:hover { color: var(--blue); }
+  .nav-link.is-active { color: var(--ink); }
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink); border: 1px solid var(--ink); padding: 9px 16px;
+    border-radius: 999px; text-decoration: none;
+    transition: background var(--dur-fast) var(--ease-std), color var(--dur-fast) var(--ease-std);
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--paper); }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-2); text-decoration: none;
+    background: none; border: 0; cursor: pointer; padding: 0;
+    transition: color var(--dur-fast) var(--ease-std);
+  }
+  .back-link:hover { color: var(--blue); }
+  @media (max-width: 720px) {
+    .site-nav { padding: 14px 24px; }
+    .nav-links { display: none; }
+  }
+
+  /* =========================================================
+     HOME — INTRO
+     ========================================================= */
+  .intro {
+    padding: 96px 64px 96px 64px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr 280px;
+    gap: 48px;
+    align-items: start;
+  }
+  .intro-label { padding-top: 14px; }
+  .intro-rule { width: 36px; height: 1px; background: var(--ink); margin-top: 14px; }
+  .intro-title {
+    font-size: 128px; font-weight: 500; letter-spacing: -0.04em; line-height: 0.95;
+    margin: 0; text-wrap: balance;
+  }
+  .intro-dot { color: var(--blue); }
+  .intro-lede {
+    font-size: 22px; line-height: 1.35; color: var(--ink); margin: 32px 0 16px 0;
+    max-width: 560px; letter-spacing: -0.005em;
+  }
+  .intro-meta {
+    font-family: var(--font-mono); font-size: 13px; color: var(--ink-3);
+    margin: 0 0 36px 0; letter-spacing: 0.02em;
+  }
+  .intro-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+  .intro-block {
+    width: 100%; height: 320px; background: var(--blue);
+    position: relative; align-self: end;
+    animation: fadeUp 0.7s var(--ease-std) both;
+  }
+  .intro-block-paper {
+    position: absolute; top: 24px; left: 24px; width: 72px; height: 72px; background: var(--paper);
+  }
+  .intro-block-yellow {
+    position: absolute; bottom: 28px; right: 28px; width: 96px; height: 96px; background: var(--yellow);
+  }
+  .intro-block-caption {
+    position: absolute; bottom: 18px; left: 22px;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(241,236,224,0.7);
+  }
+  .intro-title, .intro-lede, .intro-meta, .intro-cta { animation: fadeUp 0.55s var(--ease-std) both; }
+  .intro-lede { animation-delay: 0.06s; }
+  .intro-meta { animation-delay: 0.12s; }
+  .intro-cta  { animation-delay: 0.18s; }
+  @media (max-width: 900px) {
+    .intro { padding: 56px 24px 64px 24px; }
+    .intro-grid { grid-template-columns: 1fr; gap: 24px; }
+    .intro-title { font-size: 64px; }
+    .intro-block { height: 200px; order: -1; }
+  }
+
+  /* =========================================================
+     SECTIONS — shared
+     ========================================================= */
+  section.home-section {
+    padding: 64px 64px 96px 64px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  @media (max-width: 720px) {
+    section.home-section { padding: 48px 24px 64px 24px; }
+  }
+  .section-header {
+    display: grid; grid-template-columns: 180px 1fr; gap: 48px;
+    padding-top: 24px; border-top: 1px solid var(--ink);
+    margin-bottom: 56px;
+  }
+  .section-num {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-2); padding-top: 6px;
+  }
+  .section-title {
+    font-size: 48px; font-weight: 500; letter-spacing: -0.022em; line-height: 1.02;
+    margin: 0; max-width: 640px;
+  }
+  @media (max-width: 720px) {
+    .section-header { grid-template-columns: 1fr; gap: 12px; }
+    .section-title { font-size: 36px; }
+  }
+
+  /* =========================================================
+     CASE TILES (selected work)
+     ========================================================= */
+  .work-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  @media (max-width: 900px) { .work-grid { grid-template-columns: 1fr; } }
+  .work-tile {
+    position: relative; aspect-ratio: 4 / 5; cursor: pointer;
+    background: none; border: 0; padding: 0; text-align: left;
+    display: block; width: 100%;
+  }
+  .work-tile-shadow { position: absolute; inset: 0; background: var(--ink); }
+  .work-tile-block {
+    position: absolute; inset: 0; padding: 26px 28px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform 220ms var(--ease-std);
+  }
+  .work-tile:hover .work-tile-block { transform: translate(8px, 8px); }
+  .work-tile-blue   { background: var(--blue);   color: var(--paper); }
+  .work-tile-yellow { background: var(--yellow); color: var(--ink); }
+  .work-tile-ink    { background: var(--ink);    color: var(--paper); }
+  .work-tile-num { opacity: 0.75; }
+  .work-tile-yellow .work-tile-num { color: var(--ink-2); }
+  .work-tile-title {
+    font-size: 26px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.08;
+    text-wrap: balance;
+  }
+  .work-tile-meta {
+    margin-top: 10px;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em;
+    opacity: 0.75;
+  }
+  .work-tile-arrow {
+    display: inline-flex; margin-top: 22px; width: 28px; height: 28px;
+    align-items: center; justify-content: center;
+  }
+  .work-tile-arrow svg { width: 22px; height: 22px; }
+  .work-tile:hover .work-tile-arrow svg { transition: transform 220ms var(--ease-std); transform: translate(2px, -2px); }
+
+  /* =========================================================
+     ABOUT
+     ========================================================= */
+  .about-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .about-big {
+    font-size: 64px; font-weight: 500; letter-spacing: -0.025em; line-height: 1.02;
+    margin: 0 0 36px 0; text-wrap: balance; max-width: 540px;
+  }
+  .about-big-accent { color: var(--blue); }
+  @media (max-width: 720px) { .about-big { font-size: 44px; } }
+  .about-body p {
+    font-size: 17px; line-height: 1.65; color: var(--ink-2); margin: 0 0 18px 0;
+    max-width: 540px;
+  }
+  .fact-row {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    padding: 14px 0; border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+  }
+  .fact-row:first-child { border-top: 1px solid var(--rule); }
+  .fact-key {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .fact-val { color: var(--ink); text-align: right; }
+  .fact-val a {
+    color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+  .fact-val a:hover { color: var(--blue); text-decoration-color: var(--blue); text-decoration-thickness: 2px; }
+
+  /* =========================================================
+     CONTACT — full-bleed blue
+     ========================================================= */
+  .contact {
+    background: var(--blue); color: var(--paper); margin-top: 64px;
+  }
+  .contact-inner {
+    max-width: 1280px; margin: 0 auto; padding: 112px 64px 128px 64px;
+  }
+  @media (max-width: 720px) { .contact-inner { padding: 72px 24px 88px 24px; } }
+  .contact-label { color: rgba(241,236,224,0.65); margin-bottom: 24px; }
+  .contact-title {
+    font-size: 128px; font-weight: 500; letter-spacing: -0.035em; line-height: 0.96;
+    margin: 0 0 56px 0; color: var(--paper); text-wrap: balance; max-width: 900px;
+  }
+  .contact-dot { color: var(--yellow); }
+  .contact-skills {
+    font-family: var(--font-sans);
+    font-weight: 900;
+    font-size: clamp(28px, 5.6vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    max-width: 1100px;
+    text-wrap: balance;
+    margin: 0 0 56px 0;
+  }
+  @media (max-width: 720px) {
+    .contact-skills { font-size: clamp(22px, 7vw, 44px); letter-spacing: -0.03em; margin-bottom: 36px; }
+  }
+  @media (max-width: 720px) { .contact-title { font-size: 56px; margin-bottom: 36px; } }
+  .contact-row {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+    flex-wrap: wrap;
+    padding-top: 28px; border-top: 1px solid rgba(241,236,224,0.25);
+  }
+  .contact-email {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 28px; font-weight: 500; letter-spacing: -0.012em;
+    color: var(--paper); text-decoration: underline; text-decoration-color: rgba(241,236,224,0.3);
+    text-underline-offset: 8px; text-decoration-thickness: 1px;
+    transition: color var(--dur-fast) var(--ease-std), text-decoration-color var(--dur-fast) var(--ease-std), text-decoration-thickness var(--dur-fast) var(--ease-std);
+  }
+  .contact-email:hover { color: var(--yellow); text-decoration-color: var(--yellow); text-decoration-thickness: 2px; }
+  @media (max-width: 720px) { .contact-email { font-size: 22px; } }
+  .contact-elsewhere { display: flex; gap: 18px; flex-wrap: wrap; }
+  .contact-elsewhere a {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(241,236,224,0.7); text-decoration: none;
+    transition: color var(--dur-fast) var(--ease-std);
+  }
+  .contact-elsewhere a:hover { color: var(--yellow); }
+
+  /* =========================================================
+     FOOTER
+     ========================================================= */
+  .site-footer {
+    background: var(--ink); color: var(--paper);
+    padding: 36px 64px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  @media (max-width: 720px) { .site-footer { padding: 28px 24px; } }
+  .footer-mark { font-family: var(--font-sans); font-weight: 500; font-size: 17px; letter-spacing: -0.015em; }
+  .footer-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; color: rgba(241,236,224,0.6); }
+  .site-footer .brand-dot { color: var(--yellow); }
+  .site-footer .dot-sep { color: rgba(241,236,224,0.4); }
+
+  /* =========================================================
+     CASE STUDY DETAIL VIEWS
+     ========================================================= */
+  .case-hero {
+    position: relative; width: 100%; overflow: hidden;
+    border: 32px solid #ffffff; /* paper-margin frame, mirroring .hero-block-wrap */
+    box-sizing: border-box;
+  }
+  @media (max-width: 720px) {
+    .case-hero { border-width: 16px; }
+  }
+  /* Decoration layer matching the main hero's hero-treatment tweak */
+  .case-hero::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 1;
+    pointer-events: none;
+  }
+  html[data-hero-treatment="solid"] .case-hero::before { display: none; }
+  html[data-hero-treatment="corner"] .case-hero::before {
+    width: 50%; height: 50%; inset: auto auto 0 0;
+    background: var(--paper);
+  }
+  html[data-hero-treatment="stripes"] .case-hero::before {
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent 0, transparent 32px,
+      rgba(17,19,24,0.06) 32px, rgba(17,19,24,0.06) 33px
+    );
+  }
+  html[data-hero-treatment="grid"] .case-hero::before {
+    background-image: radial-gradient(circle, rgba(17,19,24,0.12) 1.6px, transparent 2px);
+    background-size: 28px 28px; background-position: 0 0;
+  }
+  /* On dark/blue/yellow case heroes, invert the decoration tone */
+  .case-hero-blue[class] ~ *, /* no-op for specificity */
+  .case-hero-blue.case-hero,
+  .case-hero-ink.case-hero { }
+  html[data-hero-treatment="corner"] .case-hero-blue::before,
+  html[data-hero-treatment="corner"] .case-hero-ink::before { background: #F1ECE0; }
+  html[data-hero-treatment="stripes"] .case-hero-blue::before,
+  html[data-hero-treatment="stripes"] .case-hero-ink::before {
+    background-image: repeating-linear-gradient(0deg, transparent 0, transparent 32px, rgba(255,255,255,0.10) 32px, rgba(255,255,255,0.10) 33px);
+  }
+  html[data-hero-treatment="grid"] .case-hero-blue::before,
+  html[data-hero-treatment="grid"] .case-hero-ink::before {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.22) 1.6px, transparent 2px);
+  }
+  .case-hero-inner {
+    max-width: 1280px; margin: 0 auto; padding: 40px 40px 40px 40px;
+    min-height: min(720px, calc(100vh - 80px));
+    position: static; z-index: 2;
+  }
+  @media (max-width: 720px) {
+    .case-hero-inner { padding: 24px 20px 24px 20px; min-height: min(560px, calc(100vh - 60px)); }
+  }
+  .case-hero-top {
+    position: absolute; top: 40px; right: 40px;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+    text-align: right; z-index: 2;
+  }
+  @media (max-width: 720px) { .case-hero-top { top: 24px; right: 20px; } }
+  .case-hero-blue   { background: var(--blue);   color: var(--paper); }
+  .case-hero-ink    { background: var(--ink);    color: var(--paper); }
+  .case-hero-yellow { background: var(--yellow); color: var(--ink); }
+  .case-hero-num,
+  .case-hero-year {
+    display: block;
+    white-space: nowrap;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .case-hero-num { opacity: 0.7; }
+  .case-hero-year { opacity: 0.7; }
+  .case-hero-title {
+    position: absolute;
+    left: 40px; right: 40px; bottom: 40px; top: 50%;
+    display: flex; align-items: flex-end;
+    font-family: var(--font-sans); font-weight: 900;
+    font-size: clamp(28px, 5.6vw, 88px);
+    letter-spacing: -0.035em; line-height: 0.98;
+    margin: 0; max-width: 1100px; text-wrap: balance;
+    z-index: 2;
+    animation: fadeUp 0.6s var(--ease-std) both;
+  }
+  @media (max-width: 720px) {
+    .case-hero-title { left: 20px; right: 20px; bottom: 24px; top: 40%; font-size: clamp(22px, 7vw, 44px); letter-spacing: -0.03em; }
+  }
+  .case-hero-shape { display: none; }
+
+  .case-meta {
+    max-width: 1280px; margin: 0 auto; padding: 56px 64px 16px 64px;
+  }
+  .case-meta-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+    border-top: 1px solid var(--ink); padding-top: 22px;
+  }
+  .case-meta-item { display: flex; flex-direction: column; gap: 8px; }
+  .case-meta-value { font-size: 17px; color: var(--ink); }
+  @media (max-width: 720px) {
+    .case-meta { padding: 40px 24px 8px 24px; }
+    .case-meta-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  }
+
+  .case-section {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: 240px 1fr; gap: 64px;
+    padding: 56px 64px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .case-section { grid-template-columns: 1fr; gap: 24px; padding: 40px 24px; }
+  }
+  .case-section-header { padding-top: 10px; position: sticky; top: 84px; align-self: start; }
+  @media (max-width: 900px) { .case-section-header { position: static; } }
+  .case-section-num { color: var(--ink-2); margin-bottom: 12px; }
+  .case-section-title {
+    font-size: 30px; font-weight: 500; letter-spacing: -0.018em; line-height: 1.08;
+    margin: 0; max-width: 240px;
+  }
+  .case-section-body { max-width: 640px; }
+  .case-p { font-size: 18px; line-height: 1.65; color: var(--ink); margin: 0 0 20px 0; max-width: 640px; }
+  .case-p-lede { font-size: 22px; line-height: 1.4; color: var(--ink); letter-spacing: -0.005em; margin-bottom: 28px; }
+
+  /* Pull-quote (replaces the original .detail-hl callouts) */
+  .case-quote {
+    margin: 32px 0; padding: 0; max-width: 720px;
+  }
+  .case-quote-rule { width: 48px; height: 2px; background: var(--blue); margin-bottom: 20px; }
+  .case-quote-text {
+    font-size: 28px; font-weight: 500; letter-spacing: -0.018em; line-height: 1.22;
+    margin: 0; color: var(--ink); text-wrap: balance;
+  }
+  @media (max-width: 720px) { .case-quote-text { font-size: 22px; } }
+
+  /* Sidebar context block (under the sticky title) */
+  .case-aside {
+    margin-top: 32px; padding: 16px 0 0 0; border-top: 1px solid var(--rule);
+  }
+  .case-aside-label { color: var(--ink-3); margin-bottom: 10px; }
+  .case-aside-text { font-size: 14px; color: var(--ink-2); line-height: 1.55; margin: 0 0 18px 0; }
+  .case-aside-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* Plain centered case-study layout — single column, simple section headings */
+  .case-plain {
+    max-width: 760px; margin: 0; padding: 80px 40px 96px 72px;
+  }
+  @media (max-width: 720px) { .case-plain { padding: 56px 20px 72px 36px; } }
+  .case-plain-title {
+    font-family: var(--font-sans); font-weight: 800;
+    font-size: 17px; line-height: 1.5; letter-spacing: 0;
+    text-align: left; margin: 0 0 24px 0; color: var(--ink);
+  }
+  .case-plain-p {
+    font-family: var(--font-sans); font-weight: 700;
+    font-size: 17px; line-height: 1.5; color: var(--ink);
+    text-align: left;
+    margin: 0 0 6px 0;
+  }
+  .case-plain-p + .case-plain-p { margin-top: 0; }
+  .case-plain-h {
+    font-family: var(--font-sans); font-weight: 800;
+    font-size: 17px; line-height: 1.5; color: var(--ink);
+    text-align: left;
+    margin: 32px 0 6px 0;
+  }
+  .case-plain-figure {
+    margin: 40px 0;
+    margin-left: -72px;
+    width: min(100vw, 1920px);
+    max-width: min(100vw, 1920px);
+  }
+  @media (max-width: 720px) {
+    .case-plain-figure { margin-left: -36px; }
+  }
+  .case-plain-figure image-slot,
+  .case-plain-figure img {
+    width: 100%;
+    display: block;
+    border: none;
+  }
+  .case-plain-figure--bare {
+    margin: 24px 0;
+    margin-left: 0;
+    width: auto; max-width: 100%;
+  }
+  .case-plain-figure--bare img {
+    width: auto; max-width: 100%;
+    height: auto;
+    border: none;
+  }
+  .case-plain-logo {
+    margin: 24px 0 6px 0;
+  }
+  .case-plain-logo img {
+    display: block;
+    height: 56px; width: auto;
+  }
+  .case-plain-equation {
+    margin: 24px 0; padding: 0;
+    text-align: left;
+    font-family: var(--font-sans); font-weight: 800;
+    font-size: 17px; line-height: 1.5;
+  }
+  .case-plain-equation .eq-lhs { color: var(--blue); }
+  .case-plain-equation .eq-rhs {
+    color: var(--ink);
+    background: var(--yellow);
+    padding: 0 6px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .case-plain-ey {
+    margin: 40px 0 32px 0; display: flex; justify-content: flex-start;
+  }
+  .case-plain-ey image-slot {
+    width: 96px; height: 96px;
+  }
+  .case-plain-next {
+    margin-top: 96px; padding: 32px 0 8px 0;
+    border-top: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    background: none; border-left: none; border-right: none; border-bottom: none;
+    width: 100%; cursor: pointer; color: var(--ink);
+    font-family: var(--font-sans);
+    transition: opacity var(--dur-fast) var(--ease-std);
+  }
+  .case-plain-next:hover { opacity: 0.65; }
+  .case-plain-next-title {
+    font-weight: 800; font-size: clamp(22px, 3vw, 32px); letter-spacing: -0.015em;
+  }
+  .case-plain-next-arrow {
+    width: 28px; height: 28px;
+  }
+
+  /* Next case study link — full-bleed colored block */
+  .case-next {
+    display: block; text-decoration: none; margin-top: 64px;
+    background: none; border: 0; padding: 0; width: 100%; text-align: left; cursor: pointer;
+    transition: background var(--dur-base) var(--ease-std);
+  }
+  .case-next-yellow { background: var(--yellow); color: var(--ink); }
+  .case-next-blue   { background: var(--blue);   color: var(--paper); }
+  .case-next-ink    { background: var(--ink);    color: var(--paper); }
+  .case-next-inner {
+    max-width: 1280px; margin: 0 auto; padding: 64px 64px;
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 32px;
+  }
+  .case-next-label { opacity: 0.7; margin-bottom: 14px; }
+  .case-next-title {
+    font-size: 64px; font-weight: 500; letter-spacing: -0.028em; line-height: 1;
+    margin: 0 0 10px 0; max-width: 700px; text-wrap: balance;
+  }
+  .case-next-meta {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.05em; opacity: 0.7;
+  }
+  .case-next-right { display: flex; align-items: center; gap: 14px; padding-bottom: 6px; }
+  .case-next-num { opacity: 0.7; }
+  .case-next-arrow {
+    width: 44px; height: 44px;
+    transition: transform var(--dur-base) var(--ease-std);
+  }
+  .case-next:hover .case-next-arrow { transform: translate(8px, -8px); }
+  @media (max-width: 720px) {
+    .case-next-inner { padding: 48px 24px; }
+    .case-next-title { font-size: 36px; }
+    .case-next-arrow { width: 32px; height: 32px; }
+  }
+
+  /* =========================================================
+     PRIMARY BUTTON (re-using design system .btn)
+     ========================================================= */
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* =========================================================
+     CASE STUDY LIST (simple text list)
+     ========================================================= */
+  .case-list {
+    padding: 40px 32px 64px 32px;
+    max-width: none; margin: 0;
+  }
+  @media (max-width: 720px) { .case-list { padding: 24px 16px 40px 16px; } }
+  .case-list-title {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0 0 24px 0;
+    line-height: 1;
+  }
+  .case-list-items {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .case-list-items button {
+    background: none; border: 0; padding: 0;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-align: left;
+    cursor: pointer;
+    line-height: 1.2;
+    transition: opacity var(--dur-fast) var(--ease-std);
+  }
+  .case-list-items button:hover { opacity: 0.55; }
+  @media (max-width: 720px) {
+    .case-list-title, .case-list-items button { font-size: 22px; }
+  }
+
+  /* =========================================================
+     TWEAKS — three expressive controls
+     ========================================================= */
+
+  /* Palette tweak — recolors hero block + intro accent + contact block */
+  :root {
+    --tw-hero-bg: #ffda70;
+    --tw-on-hero: var(--ink);
+    --tw-accent: var(--blue);
+    --tw-contact-bg: var(--blue);
+    --tw-contact-fg: var(--paper);
+    --tw-contact-dot: var(--yellow);
+  }
+  html[data-palette="sunny"] {
+    --tw-hero-bg: #ffda70; --tw-on-hero: #111318;
+    --tw-accent: #2B3CE0;
+    --tw-contact-bg: #2B3CE0; --tw-contact-fg: #F1ECE0; --tw-contact-dot: #ffda70;
+  }
+  html[data-palette="sky"] {
+    --tw-hero-bg: #475acb; --tw-on-hero: #F1ECE0;
+    --tw-accent: #ffda70;
+    --tw-contact-bg: #111318; --tw-contact-fg: #F1ECE0; --tw-contact-dot: #ffda70;
+  }
+  html[data-palette="cream"] {
+    --tw-hero-bg: #E8E2D2; --tw-on-hero: #111318;
+    --tw-accent: #111318;
+    --tw-contact-bg: #111318; --tw-contact-fg: #F1ECE0; --tw-contact-dot: #ffda70;
+  }
+  html[data-palette="bold"] {
+    --tw-hero-bg: #111318; --tw-on-hero: #F1ECE0;
+    --tw-accent: #ffda70;
+    --tw-contact-bg: #2B3CE0; --tw-contact-fg: #F1ECE0; --tw-contact-dot: #ffda70;
+  }
+  /* Hook palette into existing classes */
+  .hero-block { background: var(--tw-hero-bg); }
+  .hero-block-square { background: var(--tw-on-hero); }
+  .hero-block-name,
+  .hero-block-role { color: var(--tw-on-hero); }
+  .intro-dot { color: var(--tw-accent); }
+  .about-big-accent { color: var(--tw-accent); }
+  .contact { background: var(--tw-contact-bg); color: var(--tw-contact-fg); }
+  .contact-title { color: var(--tw-contact-fg); }
+  .contact-dot { color: var(--tw-contact-dot); }
+
+  /* Hero treatment tweak — decoration layered onto the block */
+  .hero-block-deco {
+    position: absolute; inset: 0;
+    pointer-events: none;
+  }
+  html[data-hero-treatment="solid"] .hero-block-deco { display: none; }
+  html[data-hero-treatment="corner"] .hero-block-deco {
+    display: block;
+    background: transparent;
+  }
+  html[data-hero-treatment="corner"] .hero-block-deco::before {
+    content: '';
+    position: absolute;
+    bottom: 36px; left: 40px;
+    width: 96px; height: 96px;
+    background: var(--paper);
+  }
+  html[data-hero-treatment="stripes"] .hero-block-deco {
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 32px,
+      rgba(0,0,0,0.10) 32px,
+      rgba(0,0,0,0.10) 33px
+    );
+  }
+  html[data-hero-treatment="grid"] .hero-block-deco {
+    background-image: radial-gradient(
+      circle,
+      rgba(0,0,0,0.22) 1.6px,
+      transparent 2px
+    );
+    background-size: 32px 32px;
+    background-position: 16px 16px;
+  }
+  /* On dark hero (bold palette), invert the decoration tone */
+  html[data-palette="bold"][data-hero-treatment="corner"] .hero-block-deco::before { background: #F1ECE0; }
+  html[data-palette="bold"][data-hero-treatment="stripes"] .hero-block-deco {
+    background-image: repeating-linear-gradient(0deg, transparent 0, transparent 32px, rgba(255,255,255,0.10) 32px, rgba(255,255,255,0.10) 33px);
+  }
+  html[data-palette="bold"][data-hero-treatment="grid"] .hero-block-deco {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.22) 1.6px, transparent 2px);
+  }
+  html[data-palette="sky"][data-hero-treatment="corner"] .hero-block-deco::before { background: #F1ECE0; }
+  html[data-palette="sky"][data-hero-treatment="stripes"] .hero-block-deco {
+    background-image: repeating-linear-gradient(0deg, transparent 0, transparent 32px, rgba(255,255,255,0.12) 32px, rgba(255,255,255,0.12) 33px);
+  }
+  html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.22) 1.6px, transparent 2px);
+  }
+
+  /* Typeface tweak — swap the sans family */
+  html[data-typeface="modern"] { --font-sans: 'Inter', 'Helvetica Neue', system-ui, sans-serif; }
+  html[data-typeface="serif"]  { --font-sans: 'Fraunces', Georgia, 'Times New Roman', serif; }
+  html[data-typeface="geometric"] { --font-sans: 'Space Grotesk', system-ui, sans-serif; }
+  /* Subtle per-typeface tracking nudge so display text feels right */
+  html[data-typeface="serif"] .intro-title,
+  html[data-typeface="serif"] .case-hero-title,
+  html[data-typeface="serif"] .contact-title,
+  html[data-typeface="serif"] .about-big { letter-spacing: -0.025em; }
+  html[data-typeface="geometric"] .intro-title,
+  html[data-typeface="geometric"] .case-hero-title,
+  html[data-typeface="geometric"] .contact-title { letter-spacing: -0.045em; }
+
+  /* =========================================================
+     TWEAKS PANEL — editorial card, bottom-right
+     ========================================================= */
+  .tweaks-panel {
+    position: fixed; bottom: 20px; right: 20px; z-index: 200;
+    width: 304px;
+    background: #FBF8F1;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    padding: 18px 18px 16px;
+    font-family: var(--font-sans);
+    box-shadow: 8px 8px 0 0 var(--ink);
+    display: none;
+    animation: fadeUp 0.25s var(--ease-std) both;
+  }
+  .tweaks-panel.is-open { display: block; }
+  .tweaks-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 12px; margin-bottom: 14px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .tweaks-title {
+    font-family: var(--font-sans);
+    font-weight: 500; font-size: 16px; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .tweaks-title-dot { color: var(--blue); }
+  .tweaks-close {
+    background: none; border: 0; padding: 0; cursor: pointer;
+    width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center;
+    color: var(--ink-2); font-family: var(--font-mono); font-size: 16px;
+  }
+  .tweaks-close:hover { color: var(--blue); }
+
+  .tweaks-section { margin-bottom: 14px; }
+  .tweaks-section:last-child { margin-bottom: 4px; }
+  .tweaks-section-label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 8px;
+  }
+  /* Swatch row (palette) */
+  .tweaks-swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .tweaks-swatch {
+    position: relative;
+    height: 44px; cursor: pointer;
+    border: 1px solid var(--rule);
+    padding: 0; background: transparent;
+    transition: transform var(--dur-fast) var(--ease-std), border-color var(--dur-fast) var(--ease-std);
+    overflow: hidden;
+  }
+  .tweaks-swatch:hover { transform: translateY(-1px); }
+  .tweaks-swatch[aria-pressed="true"] { border: 2px solid var(--ink); }
+  .tweaks-swatch .sw-fill { position: absolute; inset: 0; }
+  .tweaks-swatch .sw-dot {
+    position: absolute; top: 4px; right: 4px;
+    width: 8px; height: 3px;
+  }
+  /* SVG-style icon row (hero treatment) */
+  .tweaks-icons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .tweaks-icon {
+    position: relative; height: 44px;
+    background: #F1ECE0;
+    border: 1px solid var(--rule);
+    cursor: pointer; padding: 0;
+    transition: border-color var(--dur-fast) var(--ease-std), transform var(--dur-fast) var(--ease-std);
+    overflow: hidden;
+  }
+  .tweaks-icon:hover { transform: translateY(-1px); }
+  .tweaks-icon[aria-pressed="true"] { border: 2px solid var(--ink); }
+  .tweaks-icon .icon-fill { position: absolute; inset: 6px; background: #ffda70; }
+  .tweaks-icon[data-val="corner"] .icon-fill::after {
+    content: ''; position: absolute; left: 4px; bottom: 4px; width: 12px; height: 12px; background: #F1ECE0;
+  }
+  .tweaks-icon[data-val="stripes"] .icon-fill {
+    background-image:
+      linear-gradient(#ffda70, #ffda70),
+      repeating-linear-gradient(0deg, transparent 0 5px, rgba(0,0,0,0.18) 5px 6px);
+    background-blend-mode: normal;
+  }
+  .tweaks-icon[data-val="grid"] .icon-fill {
+    background-color: #ffda70;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.28) 1.2px, transparent 1.5px);
+    background-size: 6px 6px;
+  }
+  /* Text radio row (typeface) */
+  .tweaks-radio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .tweaks-radio button {
+    padding: 8px 6px; cursor: pointer;
+    background: transparent; border: 1px solid var(--rule);
+    font-family: var(--font-sans); font-size: 12px;
+    color: var(--ink); letter-spacing: -0.005em;
+    transition: background var(--dur-fast) var(--ease-std), border-color var(--dur-fast) var(--ease-std), color var(--dur-fast) var(--ease-std);
+  }
+  .tweaks-radio button:hover { border-color: var(--ink); }
+  .tweaks-radio button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .tweaks-radio button[data-val="serif"] { font-family: 'Fraunces', Georgia, serif; }
+  .tweaks-radio button[data-val="geometric"] { font-family: 'Space Grotesk', system-ui, sans-serif; }
+
+  /* Floating toggle (only shown if host edit-mode signal never arrives) */
+  .tweaks-toggle {
+    position: fixed; bottom: 20px; right: 20px; z-index: 199;
+    padding: 10px 14px; border-radius: 999px;
+    background: var(--ink); color: var(--paper);
+    border: 0; cursor: pointer;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    display: none;
+  }
+  .tweaks-toggle.is-visible { display: inline-flex; }
+  .site-banner {
+    background: #ffffff;
+    padding: 32px 36px 18px 36px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: clamp(14px, 1.4vw, 18px);
+    letter-spacing: -0.005em;
+    line-height: 1;
+    color: var(--ink);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: baseline;
+    gap: 24px;
+  }
+  .site-banner-name {
+    justify-self: start;
+    color: var(--ink) !important;
+    text-decoration: none;
+    transition: opacity var(--dur-fast) var(--ease-std);
+  }
+  .site-banner-name:hover { opacity: 0.6; }
+  .site-banner-role { justify-self: center; }
+  .site-banner-loc {
+    justify-self: end;
+    display: inline-flex; align-items: baseline; gap: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+  .site-banner-loc .loc-weather {
+    display: inline;
+    white-space: nowrap;
+  }
+  .site-banner-loc .loc-weather-icon {
+    width: 1.05em; height: 1.05em;
+    vertical-align: -0.18em;
+    margin-right: 4px;
+  }
+  .site-banner-loc .loc-time { font-feature-settings: "tnum"; }
+  @media (max-width: 720px) {
+    .site-banner {
+      grid-template-columns: auto auto;
+      grid-template-areas: "name loc" "role role";
+      gap: 6px 12px;
+      padding: 16px 20px 12px 20px;
+    }
+    .site-banner-name { grid-area: name; }
+    .site-banner-loc { grid-area: loc; }
+    .site-banner-role { grid-area: role; justify-self: start; }
+  }
+  .hero-block-wrap { padding-top: 0; }
+</style>
+<script src="image-slot.js"></script>
+</head>
+<body>
+
+<!-- ============================================================
+     HOME VIEW
+     ============================================================ -->
+<div class="view is-active" id="view-home" data-screen-label="Home">
+
+  <!-- Hero block (full sky-blue, paper margins) -->
+  <div class="hero-block-wrap">
+    <div class="hero-block-banner">
+      <span class="hero-block-banner-name">Gabriel Reyes</span>
+      <span class="hero-block-banner-role">(Product Designer)</span>
+      <span class="hero-block-banner-loc">
+        <span class="loc-name">Torquay, VIC Australia</span>
+        <span class="loc-weather" id="hero-block-banner-weather" aria-label="Current weather in Torquay">
+          <svg class="loc-weather-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+          </svg>
+          <span class="loc-weather-temp">--°</span>
+        </span>
+        <span class="loc-time" id="hero-block-banner-time">--:--</span>
+      </span>
+    </div>
+    <div class="hero-block" style="font-weight: 800; background-color: rgb(255, 218, 112); color: rgb(43, 60, 224); padding: 0px">
+      <div class="hero-block-deco" aria-hidden="true"></div>
+      <div class="hero-block-mark" style="width: 200px">
+        <div class="hero-block-square" style="width: 342px"></div>
+        <div class="hero-block-contact">
+          <a href="mailto:gabosoueu@gmail.com">gabosoueu@gmail.com</a>
+          <a href="tel:+61422330674">0422 330 674</a>
+          <a href="https://www.linkedin.com/in/gabreyesdesigner/" target="_blank" rel="noopener">LinkedIn<svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        </div>
+        <div class="hero-block-square--half" style="width: 342px; height: 4px; margin: 2px 0px 0px"></div>
+      </div>
+      <div class="hero-block-statement">
+        <p>Hi, I'm Gabe. I believe in prototyping fast with AI and putting ideas in front of people. This portfolio? Built it this morning!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case studies (simple list) -->
+  <section class="case-list" id="work">
+    <h2 class="case-list-title" style="font-weight: 900">Case studies</h2>
+    <ul class="case-list-items">
+      <li><button onclick="showCase('feedzai')" style="font-size: 21px">Feedzai</button></li>
+      <li><button onclick="showCase('payments')" style="font-size: 21px">Helping clients pay shareholders without the paperwork</button></li>
+      <li><button onclick="showCase('aml')" style="font-size: 21px">Giving compliance teams one place to verify investors</button></li>
+      <li><button onclick="showCase('capital')" style="font-size: 21px">Letting companies run capital raises end to end</button></li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <h2 class="contact-title contact-skills">end-to-end product design <span class="contact-dot">/</span> rapid prototyping <span class="contact-dot">/</span> wireframes <span class="contact-dot">/</span> concept design <span class="contact-dot">/</span> ux design <span class="contact-dot">/</span> ui design <span class="contact-dot">/</span> design systems <span class="contact-dot">/</span> accessibility</h2>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-mark">gabriel reyes<span class="brand-dot">.</span></div>
+    <div class="footer-meta">
+      <span>© 2026 Gabriel Reyes</span>
+      <span class="dot-sep">·</span>
+      <span>Melbourne, AU</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ============================================================
+     CASE STUDY 01 — DIVIDEND & DISTRIBUTION PAYMENTS
+     ============================================================ -->
+<div class="view" id="view-payments" data-screen-label="Case Study — Payments">
+  <header class="case-hero case-hero-blue">
+    <div class="case-hero-inner">
+      <div class="case-hero-top">
+        <span class="case-hero-num">01 / Case study</span></div>
+      <div>
+        <h1 class="case-hero-title">Helping clients pay shareholders without the paperwork.</h1>
+      </div>
+      <div class="case-hero-shape" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <section class="case-plain">
+    <p class="case-plain-p">Registry Direct is a share registry where companies and trusts can self-manage their registers.</p>
+    <p class="case-plain-p">One of the requests from clients was to allow them to manage a Dividend or Distribution payment, enabling them to generate payments for their shareholders.</p>
+
+    <figure class="case-plain-figure">
+      <img src="images/payment-dash.webp" alt="Registry Direct payment details screen for a scheduled distribution payment." />
+    </figure>
+
+    <h3 class="case-plain-h">What capability were we aiming to build?</h3>
+    <p class="case-plain-p">Companies and trusts often pay their shareholders a percentage of their earnings. The idea behind this feature was to allow our clients to easily calculate each individual payment for each shareholder.</p>
+    <p class="case-plain-p">To receive a payment as a shareholder, you need to own shares on a specified date. The more shares you own, the larger the payment, since your payment is based on each unit you own.</p>
+    <p class="case-plain-p">It was easy for us to determine how many units a shareholder owned and how much their final payment would be, based on the price per unit.</p>
+    <p class="case-plain-p">Ultimately, the company/trust wanted to be able to easily calculate how much each shareholder would receive and transfer that amount to the shareholder's bank account.</p>
+
+    <h3 class="case-plain-h">Some of the challenges</h3>
+    <p class="case-plain-p">From my initial conversations with stakeholders, all we had to do was multiply the number of units a shareholder owned by the pence per unit that our client entered in the setup form.</p>
+
+    <figure class="case-plain-figure case-plain-figure--bare">
+      <img src="images/amount.webp" alt="Equation: 2000 shares owned times 0.394 price per unit equals $788 payment amount." />
+    </figure>
+
+    <p class="case-plain-p">Although that calculation is correct, there are many other factors to consider in what we call a "Payment cycle."</p>
+    <p class="case-plain-p">The "Payment cycle" was a way of setting a start and end point for the entire process, from setting up a payment for all your shareholders to actually making the payment to their bank accounts.</p>
+    <p class="case-plain-p">Some other factors we needed to consider were how much tax needed to be withheld from each shareholder, depending on their country of residence or whether they had supplied a TFN. Also, if the shareholder has a bank account, did we send them a cheque, or did we withhold the full amount?</p>
+    <p class="case-plain-p">Many of these variables had to be left up to our clients, so we needed to give them the flexibility to choose what the system did based on the shareholders' settings.</p>
+    <p class="case-plain-p">Our biggest challenge was to provide this feature for trusts so they could pay a distribution. Trusts need to be able to define each component of a payment, and each component has a different set of properties that affect each shareholder's individual payments.</p>
+
+    <p class="case-plain-p">Since this was beyond our expertise, we contracted Ernst and Young to help us define each possible component and how each of them works. For example, for some components, you are meant to withhold tax, while for others, you are not. Additionally, for some components, there may be a treaty between countries where you calculate a smaller percentage of tax.</p>
+    <p class="case-plain-p">A single payment can have multiple components, so stitching it all together to calculate the correct amount for someone to be paid and their tax withheld wasn't easy.</p>
+
+    <h3 class="case-plain-h">Design and build process</h3>
+    <p class="case-plain-p">We started by allowing only companies to pay dividends since it was a more straightforward challenge with fewer unknowns. Once we perfected the dividend payment cycle, we were ready to move on to distribution payments for trusts.</p>
+    <p class="case-plain-p">The challenge here was to ensure that we applied all the tax rules properly, based on what E&amp;Y had provided us through their documentation. It was essentially a series of spreadsheets that needed to be distilled into rules that the development team could incorporate into the payment cycle.</p>
+    <p class="case-plain-p">Since this was a complex feature, we initially released it to a designated set of clients to gather feedback and iron out any bugs.</p>
+    <p class="case-plain-p">We also organised some training sessions for some of our major clients to help them become more comfortable with the process.</p>
+
+    <button class="case-plain-next" onclick="showCase('aml')" aria-label="Next case study: Giving compliance teams one place to verify investors">
+      <span class="case-plain-next-title">Giving compliance teams one place to verify investors</span>
+      <svg class="case-plain-next-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 6l6 6-6 6"/>
+      </svg>
+    </button>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-mark">gabriel reyes<span class="brand-dot">.</span></div>
+    <div class="footer-meta">
+      <span>© 2026 Gabriel Reyes</span>
+      <span class="dot-sep">·</span>
+      <span>Melbourne, AU</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ============================================================
+     CASE STUDY 02 — AML & KYC
+     ============================================================ -->
+<div class="view" id="view-aml" data-screen-label="Case Study — AML & KYC">
+  <header class="case-hero case-hero-ink">
+    <div class="case-hero-inner">
+      <div class="case-hero-top">
+        <span class="case-hero-num">02 / Case study</span></div>
+      <div>
+        <h1 class="case-hero-title">Giving compliance teams one place to verify investors.</h1>
+      </div>
+      <div class="case-hero-shape" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <section class="case-plain">
+    <p class="case-plain-p">Registry Direct holds a database of individuals, companies, and trusts with all their associated details.</p>
+    <p class="case-plain-p">Under Australian law, companies and trusts on the platform are legally required to verify the identity of shareholders before accepting any investments. Historically, this process was entirely manual — managed outside the platform through document submissions.</p>
+
+    <figure class="case-plain-figure">
+      <img src="images/aml-1.webp" alt="GreenID verification UI showing investor details with verified individuals and PEP screening status." />
+    </figure>
+
+    <h3 class="case-plain-h">What capability were we aiming to build?</h3>
+    <p class="case-plain-p">Our clients needed a streamlined way to verify new shareholders without running a separate compliance workflow outside the platform.</p>
+    <p class="case-plain-p">The goal was to give them a single in-platform path to satisfy AML and CTF requirements prior to accepting an investment, covering both Australian/NZ investors via an automated identity check, and international investors via a structured manual review.</p>
+
+    <h3 class="case-plain-h">Some of the challenges</h3>
+    <div class="case-plain-logo">
+      <img src="images/greenid-gbg.webp" alt="greenID by GBG logo" />
+    </div>
+    <p class="case-plain-p">We evaluated multiple providers before settling on GreenID by GBG, the most stable API with the best documentation. But GreenID only covers Australian and NZ investors, so we needed a fallback for international shareholders.</p>
+    <p class="case-plain-p">Given the low volume of international investors, we decided a manual verification path (scanned documents) was defensible, even though some clients pushed for a fully electronic solution. The cost of a second API for a small subset was hard to justify.</p>
+    <p class="case-plain-p">Verification failures added another design challenge. They can be legitimate (a name that genuinely doesn't match) or benign (a recently changed address). The design had to give clients context to make a judgement call, and a path to manually override or re-verify.</p>
+
+    <figure class="case-plain-figure">
+      <img src="images/aml-form.webp" alt="AML/CTF form with ID type, ID number, and file attachment fields." />
+    </figure>
+
+    <h3 class="case-plain-h">Design and build process</h3>
+    <p class="case-plain-p">We deliberately waited on prototyping until we fully understood what the GreenID API could and couldn't do. Once we had a clear picture, we built prototypes and ran facilitated sessions with a select group of clients.</p>
+    <p class="case-plain-p">These sessions surfaced edge cases around partial verification states we hadn't anticipated, which fed directly back into the design before release.</p>
+    <p class="case-plain-p">The end result was that clients could now manage all AML and CTF requirements within Registry Direct prior to accepting investments, compliant with Australian law, with no need to manage multiple systems.</p>
+
+    <button class="case-plain-next" onclick="showCase('capital')" aria-label="Next case study: Letting companies run capital raises end to end">
+      <span class="case-plain-next-title">Letting companies run capital raises end to end</span>
+      <svg class="case-plain-next-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 6l6 6-6 6"/>
+      </svg>
+    </button>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-mark">gabriel reyes<span class="brand-dot">.</span></div>
+    <div class="footer-meta">
+      <span>© 2026 Gabriel Reyes</span>
+      <span class="dot-sep">·</span>
+      <span>Melbourne, AU</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ============================================================
+     CASE STUDY 03 — CAPITAL RAISING
+     ============================================================ -->
+<div class="view" id="view-capital" data-screen-label="Case Study — Capital Raising">
+  <header class="case-hero case-hero-yellow">
+    <div class="case-hero-inner">
+      <div class="case-hero-top">
+        <span class="case-hero-num">03 / Case study</span></div>
+      <div>
+        <h1 class="case-hero-title">Letting companies run capital raises end to end.</h1>
+      </div>
+      <div class="case-hero-shape" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <section class="case-plain">
+    <p class="case-plain-p">Registry Direct's clients (companies and trusts) regularly release new investment offerings to the public.</p>
+    <p class="case-plain-p">Historically, this was managed through PDF forms and manual payment coordination. A client would create a PDF describing the opportunity, attach a paper form, and then manually reconcile each investment against bank transfers.</p>
+    <p class="case-plain-p">Since our clients' investors were already on the platform, we had an opportunity to replace that workflow with a digital application form that could handle investment amounts, investor details, and payment in one place.</p>
+
+    <figure class="case-plain-figure">
+      <img src="images/cap-raising-1.webp" alt="Rubix capital raising application form, Payment Options step with bank details and application progress sidebar." />
+    </figure>
+
+    <h3 class="case-plain-h">What capability were we aiming to build?</h3>
+    <p class="case-plain-p">The goal was a white-label form builder where clients had full control over branding, rules and minimums without needing us for every change request.</p>
+    <p class="case-plain-p">Investors should be able to apply, supply their details, and pay in a single flow, while clients had a back-office to manage the offering and track applications.</p>
+
+    <h3 class="case-plain-h">Some of the challenges</h3>
+    <p class="case-plain-p">Our first iteration generated forms on demand. A client asked, we built it and shared the URL. This was unsustainable. Change requests were too frequent and too fiddly to manage at scale.</p>
+    <p class="case-plain-p">Handling existing investors was the more significant challenge. Most people investing in a raise were already shareholders. Allowing them to apply without creating duplicate records required careful identity matching logic, which shaped how we designed the investor-facing flow.</p>
+    <p class="case-plain-p">Payment management added complexity. Clients needed to mark when money arrived, reissue invoices, and generate receipts. We had to design a back-office workflow that matched how these clients actually operated.</p>
+
+    <h3 class="case-plain-h">Design and build process</h3>
+    <p class="case-plain-p">We ran extensive consultations before designing anything. The variety of ways different companies run capital raises was wider than we'd assumed. Some required strict minimums, others soft; some collected payment upfront, others invoiced later.</p>
+    <p class="case-plain-p">That variety drove the decision to build a form builder rather than fixed templates. We used Rubix as the underlying framework and iterated heavily on the builder UI.</p>
+    <p class="case-plain-p">The first version was powerful but intimidating. Subsequent rounds focused on reducing cognitive load for first-time users, simplifying the configuration surface and improving defaults.</p>
+
+    <button class="case-plain-next" onclick="showCase('feedzai')" aria-label="Next case study: Feedzai">
+      <span class="case-plain-next-title">Feedzai</span>
+      <svg class="case-plain-next-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 6l6 6-6 6"/>
+      </svg>
+    </button>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-mark">gabriel reyes<span class="brand-dot">.</span></div>
+    <div class="footer-meta">
+      <span>© 2026 Gabriel Reyes</span>
+      <span class="dot-sep">·</span>
+      <span>Melbourne, AU</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ============================================================
+     CASE STUDY 04 — FEEDZAI
+     ============================================================ -->
+<div class="view" id="view-feedzai" data-screen-label="Case Study — Feedzai">
+  <header class="case-hero case-hero-ink">
+    <div class="case-hero-inner">
+      <div class="case-hero-top">
+        <span class="case-hero-num">04 / Case study</span></div>
+      <div>
+        <h1 class="case-hero-title">Feedzai.</h1>
+      </div>
+      <div class="case-hero-shape" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <section class="case-plain">
+    <p class="case-plain-p">Some of the world's largest banks, NAB, ANZ, UBS, and Standard Chartered, use Feedzai to prevent financial crime and automate customer verification.</p>
+    <p class="case-plain-p">In V1 of the Feedzai Orchestration Solution, building and configuring these automated workflows required an engineer. Every new data source, every logic change, every tweak to a decision rule meant a ticket, a handoff, and a wait.</p>
+
+    <h3 class="case-plain-h">What capability were we aiming to build?</h3>
+    <p class="case-plain-p">When a bank onboards a new customer, they need to verify their identity, screen them against sanctions and PEP lists, assess fraud risk, and make a decision, often in seconds.</p>
+    <p class="case-plain-p">FOS automated that process by connecting data sources and orchestrating the logic between them. But in V1, the only people who could build and modify those workflows were engineers. Business analysts, the people who actually understood the compliance rules and verification logic, had no way to act on that knowledge directly.</p>
+    <p class="case-plain-p">The goal for V2 was to give analysts a visual, low-code canvas to configure data sources, build workflow logic, and publish changes, without writing a single line of code or raising an engineering ticket.</p>
+
+    <h3 class="case-plain-h">Some of the challenges</h3>
+    <p class="case-plain-p">The biggest challenge wasn't building the canvas. It was deciding how much complexity to expose.</p>
+    <p class="case-plain-p">Engineers working in V1 had full control. Every parameter, every authentication detail, every transformation was explicit. Business analysts didn't need that level of control, but they did need enough. A BA configuring a sanctions check still needs to understand what data is being sent, what comes back, and what happens when it fails.</p>
+    <p class="case-plain-p">Strip too much away and the tool becomes a black box they can't trust. Leave too much in and you've just moved the complexity from an API config file to a screen.</p>
+
+    <figure class="case-plain-figure">
+      <image-slot id="case-feedzai-1" placeholder="Source configuration screen showing API connection setup." shape="rect" style="aspect-ratio: 16 / 9;"></image-slot>
+    </figure>
+
+    <p class="case-plain-p">The second challenge was the data itself. Banks connecting to external providers for the first time, identity services, sanctions lists, credit bureaus, were getting back responses in completely different formats. Analysts needed a way to transform and normalise that data before it could flow through a workflow, without writing SQL or code from scratch.</p>
+
+    <figure class="case-plain-figure">
+      <image-slot id="case-feedzai-2" placeholder="Transformation node being configured in the canvas." shape="rect" style="aspect-ratio: 16 / 9;"></image-slot>
+    </figure>
+
+    <p class="case-plain-p">Finally, trust. Engineers could read a stack trace and debug a failed workflow. Analysts couldn't. If something went wrong in a live verification run, they needed enough visibility to understand what happened and fix it, without calling an engineer.</p>
+
+    <figure class="case-plain-figure">
+      <image-slot id="case-feedzai-3" placeholder="Workflow run log showing node-level execution detail and error state." shape="rect" style="aspect-ratio: 16 / 9;"></image-slot>
+    </figure>
+
+    <h3 class="case-plain-h">Design and build process</h3>
+    <p class="case-plain-p">We started by mapping what engineers were actually doing in V1, the sequence of steps, the decisions they were making, the mental model they were working from. That became the foundation for the canvas. We weren't designing from scratch; we were making an existing process visible.</p>
+    <p class="case-plain-p">Early prototypes focused on the source configuration flow, the entry point for everything else. If analysts couldn't connect a data source confidently, nothing downstream mattered. We tested with analysts at client institutions and found that the hardest part wasn't the technical fields, it was not knowing whether the connection had worked. Feedback and validation states became a significant design focus.</p>
+
+    <figure class="case-plain-figure">
+      <image-slot id="case-feedzai-4" placeholder="Connection test confirmation state, success and error variants." shape="rect" style="aspect-ratio: 16 / 9;"></image-slot>
+    </figure>
+
+    <p class="case-plain-p">The canvas itself went through multiple rounds of iteration. Simple linear workflows were intuitive from the start. Branching logic, if/else conditions, parallel sources, layered transformations, was harder to represent without overwhelming first-time users. We introduced progressive disclosure, surfacing advanced options only when needed, so the default experience stayed approachable without sacrificing power for complex use cases.</p>
+    <p class="case-plain-p">Testing and simulation were built directly into the canvas. Before publishing a workflow, analysts could run it against sample data and see exactly which nodes fired, what data passed through, and where failures occurred. This was the trust mechanism. It gave analysts the confidence to publish without needing an engineer to sign off.</p>
+
+    <figure class="case-plain-figure">
+      <image-slot id="case-feedzai-5" placeholder="Simulation panel showing a sample run with node-level results." shape="rect" style="aspect-ratio: 16 / 9;"></image-slot>
+    </figure>
+
+    <p class="case-plain-p">The result was a platform where business analysts at some of the world's largest financial institutions could go from a compliance requirement to a live, automated verification workflow, without engineering involvement for every change.</p>
+
+    <button class="case-plain-next" onclick="showCase('payments')" aria-label="Next case study: Helping clients pay shareholders without the paperwork">
+      <span class="case-plain-next-title">Helping clients pay shareholders without the paperwork</span>
+      <svg class="case-plain-next-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 6l6 6-6 6"/>
+      </svg>
+    </button>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-mark">gabriel reyes<span class="brand-dot">.</span></div>
+    <div class="footer-meta">
+      <span>© 2026 Gabriel Reyes</span>
+      <span class="dot-sep">·</span>
+      <span>Melbourne, AU</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Simple SPA — match the structure of Gabriel's original portfolio.
+  function setView(id) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('is-active'));
+    const el = document.getElementById(id);
+    if (el) el.classList.add('is-active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  function showHome() { setView('view-home'); }
+  // Local time for the hero banner (Torquay = Australia/Melbourne TZ)
+  (function tickHeroBannerTime(){
+    const el = document.getElementById('hero-block-banner-time');
+    if (!el) return;
+    function render() {
+      try {
+        const s = new Intl.DateTimeFormat('en-AU', {
+          timeZone: 'Australia/Melbourne',
+          hour: '2-digit', minute: '2-digit', hour12: false
+        }).format(new Date());
+        el.textContent = s;
+      } catch (_) {
+        const d = new Date();
+        el.textContent = String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+      }
+    }
+    render();
+    setInterval(render, 30 * 1000);
+  })();
+
+  // Live Torquay weather via Open-Meteo (no auth required, CORS-enabled)
+  (function fetchHeroBannerWeather(){
+    const wrap = document.getElementById('hero-block-banner-weather');
+    if (!wrap) return;
+    const iconEl = wrap.querySelector('.loc-weather-icon');
+    const tempEl = wrap.querySelector('.loc-weather-temp');
+
+    // Inline SVG icons by Open-Meteo WMO weather code bucket
+    function svgFor(code, isDay) {
+      const stroke = 'currentColor';
+      const s = (paths) => `<g fill="none" stroke="${stroke}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${paths}</g>`;
+      // Sun
+      const sun = s(`<circle cx="12" cy="12" r="4"></circle><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/>`);
+      // Moon
+      const moon = s(`<path d="M20 14.5A8 8 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5z"/>`);
+      // Partly cloudy day
+      const partly = s(`<circle cx="8" cy="9" r="3"></circle><path d="M8 3.5v1.5M3.5 9H5M11.2 5.8l1-1M4.8 13.2l1-1"/><path d="M9 17h8a3 3 0 1 0-1.2-5.76A4 4 0 0 0 9 13a3 3 0 0 0 0 6z"/>`);
+      // Cloud
+      const cloud = s(`<path d="M7 18h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.7-1.2A3.5 3.5 0 0 0 7 18z"/>`);
+      // Fog
+      const fog = s(`<path d="M7 15h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.7-1.2A3.5 3.5 0 0 0 7 15z"/><path d="M4 19h16M6 22h12"/>`);
+      // Rain
+      const rain = s(`<path d="M7 14h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.7-1.2A3.5 3.5 0 0 0 7 14z"/><path d="M9 17l-1 3M13 17l-1 3M17 17l-1 3"/>`);
+      // Snow
+      const snow = s(`<path d="M7 14h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.7-1.2A3.5 3.5 0 0 0 7 14z"/><path d="M9 18v3M9 19.5l-1 -.5M9 19.5l1 -.5M14 18v3M14 19.5l-1 -.5M14 19.5l1 -.5"/>`);
+      // Thunder
+      const thunder = s(`<path d="M7 14h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.7-1.2A3.5 3.5 0 0 0 7 14z"/><path d="M12 15l-2 4h3l-1 3"/>`);
+
+      if (code === 0) return isDay ? sun : moon;
+      if ([1,2,3].includes(code)) return isDay ? partly : cloud;
+      if ([45,48].includes(code)) return fog;
+      if ([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code)) return rain;
+      if ([71,73,75,77,85,86].includes(code)) return snow;
+      if ([95,96,99].includes(code)) return thunder;
+      return cloud;
+    }
+
+    function render(temp, code, isDay) {
+      tempEl.textContent = Math.round(temp) + '°';
+      const svg = svgFor(code, isDay);
+      iconEl.outerHTML = `<svg class="loc-weather-icon" viewBox="0 0 24 24" aria-hidden="true">${svg}</svg>`;
+    }
+
+    function fetchOnce() {
+      const url = 'https://api.open-meteo.com/v1/forecast?latitude=-38.33&longitude=144.32&current=temperature_2m,weather_code,is_day&timezone=Australia%2FMelbourne';
+      fetch(url, { cache: 'no-store' })
+        .then(r => r.ok ? r.json() : Promise.reject(r.status))
+        .then(d => {
+          const c = d && d.current;
+          if (!c) throw new Error('no current block');
+          render(c.temperature_2m, c.weather_code, c.is_day === 1);
+        })
+        .catch(() => { /* keep placeholders silently */ });
+    }
+    fetchOnce();
+    // refresh every 15min
+    setInterval(fetchOnce, 15 * 60 * 1000);
+  })();
+  function showCase(slug) { setView('view-' + slug); }
+  function goTo(anchor) {
+    if (!document.getElementById('view-home').classList.contains('is-active')) {
+      setView('view-home');
+      setTimeout(() => {
+        const t = document.getElementById(anchor);
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 60);
+    } else {
+      const t = document.getElementById(anchor);
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+</script>
+
+<!-- ============================================================
+     TWEAKS PANEL
+     ============================================================ -->
+<button class="tweaks-toggle" id="tweaks-toggle" aria-label="Open tweaks panel">Tweaks</button>
+<aside class="tweaks-panel" id="tweaks-panel" role="dialog" aria-label="Tweaks">
+  <header class="tweaks-head">
+    <div class="tweaks-title">Tweaks<span class="tweaks-title-dot">.</span></div>
+    <button class="tweaks-close" id="tweaks-close" aria-label="Close tweaks">✕</button>
+  </header>
+
+  <section class="tweaks-section">
+    <div class="tweaks-section-label">Palette</div>
+    <div class="tweaks-swatches" data-key="palette">
+      <button class="tweaks-swatch" data-val="sunny" title="Sunny: yellow + blue">
+        <span class="sw-fill" style="background:#ffda70"></span>
+        <span class="sw-dot" style="background:#2B3CE0"></span>
+      </button>
+      <button class="tweaks-swatch" data-val="sky" title="Sky: blue + yellow">
+        <span class="sw-fill" style="background:#475acb"></span>
+        <span class="sw-dot" style="background:#ffda70"></span>
+      </button>
+      <button class="tweaks-swatch" data-val="cream" title="Cream: restrained">
+        <span class="sw-fill" style="background:#E8E2D2"></span>
+        <span class="sw-dot" style="background:#111318"></span>
+      </button>
+      <button class="tweaks-swatch" data-val="bold" title="Bold: ink + yellow">
+        <span class="sw-fill" style="background:#111318"></span>
+        <span class="sw-dot" style="background:#ffda70"></span>
+      </button>
+    </div>
+  </section>
+
+  <section class="tweaks-section">
+    <div class="tweaks-section-label">Hero treatment</div>
+    <div class="tweaks-icons" data-key="heroTreatment">
+      <button class="tweaks-icon" data-val="solid" title="Solid block"><span class="icon-fill"></span></button>
+      <button class="tweaks-icon" data-val="corner" title="Paper corner"><span class="icon-fill"></span></button>
+      <button class="tweaks-icon" data-val="stripes" title="Stripes"><span class="icon-fill"></span></button>
+      <button class="tweaks-icon" data-val="grid" title="Dotted grid"><span class="icon-fill"></span></button>
+    </div>
+  </section>
+
+  <section class="tweaks-section">
+    <div class="tweaks-section-label">Type voice</div>
+    <div class="tweaks-radio" data-key="typeface">
+      <button data-val="modern" title="Inter">Modern</button>
+      <button data-val="serif" title="Fraunces">Serif</button>
+      <button data-val="geometric" title="Space Grotesk">Geometric</button>
+    </div>
+  </section>
+</aside>
+
+<script>
+(function () {
+  // Wrapped block — the host parses this JSON and rewrites it on persist.
+  const TWEAK_DEFAULS = /*EDITMODE-BEGIN*/{
+    "palette": "bold",
+    "heroTreatment": "solid",
+    "typeface": "modern"
+  }/*EDITMODE-END*/;
+
+  const state = Object.assign({}, TWEAK_DEFAULS);
+  const $panel = document.getElementById('tweaks-panel');
+  const $toggle = document.getElementById('tweaks-toggle');
+  const $close = document.getElementById('tweaks-close');
+
+  function apply() {
+    document.documentElement.setAttribute('data-palette', state.palette);
+    document.documentElement.setAttribute('data-hero-treatment', state.heroTreatment);
+    document.documentElement.setAttribute('data-typeface', state.typeface);
+    // Update pressed-states in the UI
+    $panel.querySelectorAll('[data-key]').forEach(group => {
+      const key = group.getAttribute('data-key');
+      group.querySelectorAll('[data-val]').forEach(btn => {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-val') === state[key] ? 'true' : 'false');
+      });
+    });
+  }
+
+  function setKey(key, val) {
+    state[key] = val;
+    apply();
+    // Persist via host
+    try {
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: val } }, '*');
+    } catch (e) { /* not in host */ }
+  }
+
+  // Wire up clicks
+  $panel.querySelectorAll('[data-key]').forEach(group => {
+    const key = group.getAttribute('data-key');
+    group.querySelectorAll('[data-val]').forEach(btn => {
+      btn.addEventListener('click', () => setKey(key, btn.getAttribute('data-val')));
+    });
+  });
+
+  function open() { $panel.classList.add('is-open'); $toggle.classList.remove('is-visible'); }
+  function close() {
+    $panel.classList.remove('is-open');
+    // Show fallback toggle so the user can reopen if no host edit-mode is around
+    if (window.__tweaksHasHost !== true) $toggle.classList.add('is-visible');
+    try { window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*'); } catch (e) {}
+  }
+  $close.addEventListener('click', close);
+  $toggle.addEventListener('click', open);
+
+  // Listen for host edit-mode messages FIRST, then announce availability.
+  window.addEventListener('message', (ev) => {
+    if (!ev || !ev.data) return;
+    if (ev.data.type === '__activate_edit_mode')   { window.__tweaksHasHost = true; open(); }
+    if (ev.data.type === '__deactivate_edit_mode') { window.__tweaksHasHost = true; close(); }
+  });
+
+  // Apply defaults immediately so the page renders correctly
+  apply();
+
+  // Announce we have tweaks
+  try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch (e) {}
+
+  // If after a moment we still haven't heard from a host, show fallback toggle
+  setTimeout(() => {
+    if (window.__tweaksHasHost !== true && !$panel.classList.contains('is-open')) {
+      $toggle.classList.add('is-visible');
+    }
+  }, 800);
+})();
+</script>
+</body>
+</html>

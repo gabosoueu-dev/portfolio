@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Ink scale</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 28px 36px; min-height: 220px; box-sizing: border-box; background: var(--paper); }
+  .row { display: flex; align-items: center; gap: 20px; padding: 10px 0; }
+  .chip { width: 64px; height: 38px; flex: none; }
+  .name { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); width: 110px; }
+  .hex { font-family: var(--font-mono); font-size: 13px; color: var(--ink-3); width: 110px; }
+  .sample { font-size: 17px; }
+  .ink   { background: var(--ink); }
+  .ink2  { background: var(--ink-2); }
+  .ink3  { background: var(--ink-3); }
+  .rule  { background: var(--rule); border: 1px dashed var(--rule-strong); }
+  .s-ink   { color: var(--ink); }
+  .s-ink2  { color: var(--ink-2); }
+  .s-ink3  { color: var(--ink-3); }
+  .s-rule  { color: var(--ink-3); font-style: normal; opacity: 0.6; }
+</style>
+</head>
+<body>
+  <div class="row"><div class="chip ink"></div><span class="name">ink</span><span class="hex">#111318</span><span class="sample s-ink">Primary type and rules</span></div>
+  <div class="row"><div class="chip ink2"></div><span class="name">ink-2</span><span class="hex">#3A3D44</span><span class="sample s-ink2">Body de-emphasis</span></div>
+  <div class="row"><div class="chip ink3"></div><span class="name">ink-3</span><span class="hex">#6B6E76</span><span class="sample s-ink3">Captions, meta, labels</span></div>
+  <div class="row"><div class="chip rule"></div><span class="name">rule</span><span class="hex">12% ink</span><span class="sample s-rule">Hairline dividers</span></div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Support palette</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 0; min-height: 180px; box-sizing: border-box; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .swatch { padding: 18px 20px; display: flex; flex-direction: column; justify-content: space-between; min-height: 180px; box-sizing: border-box; }
+  .swatch .name { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .swatch .hex  { font-family: var(--font-mono); font-size: 13px; }
+  .swatch .note { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; opacity: 0.7; margin-top: 4px; }
+  .sky    { background: var(--sky); color: var(--ink); }
+  .teal   { background: var(--teal); color: var(--ink); }
+  .paper2 { background: var(--paper-2); color: var(--ink); }
+  .paper3 { background: var(--paper-3); color: var(--ink); border: 1px solid var(--rule); border-left: 0; }
+</style>
+</head>
+<body>
+  <div class="swatch sky"><span class="name">sky</span><div><span class="hex">#1FAFE8</span><div class="note">in compositions only</div></div></div>
+  <div class="swatch teal"><span class="name">teal</span><div><span class="hex">#3FC4C5</span><div class="note">in compositions only</div></div></div>
+  <div class="swatch paper2"><span class="name">paper-2</span><div><span class="hex">#E8E2D2</span><div class="note">inset blocks</div></div></div>
+  <div class="swatch paper3"><span class="name">paper-3</span><div><span class="hex">#FBF8F1</span><div class="note">lifted surface</div></div></div>
+</body>
+</html>

@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabriel Reyes — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0d0d0d;
+  --cream: #f0ebe3;
+  --white: #ffffff;
+  --yellow: #f5e642;
+  --pink: #f23d6d;
+  --cyan: #3de8c8;
+  --orange: #ff6b2b;
+  --green: #2ecc71;
+  --condensed: 'Barlow Condensed', sans-serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--black);
+  color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  background: var(--black);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.nav-logo-mark {
+  width: 28px;
+  height: 28px;
+  background: var(--cream);
+  border-radius: 3px;
+}
+
+.nav-logo-name {
+  font-family: var(--condensed);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.2;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  color: rgba(240,235,227,0.45);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--cream); }
+
+/* HERO */
+.hero {
+  padding-top: 4.5rem;
+  background: var(--black);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-top {
+  padding: 2.5rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.hero-intro {
+  font-size: 1.6rem;
+  color: var(--white);
+  line-height: 1.4;
+  max-width: 560px;
+}
+
+.hero-intro-right {
+  font-size: 0.82rem;
+  color: rgba(240,235,227,0.4);
+  line-height: 1.65;
+  max-width: 260px;
+  text-align: right;
+}
+
+.get-in-touch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  transition: gap 0.2s;
+}
+
+.get-in-touch:hover { gap: 10px; }
+
+.hero-headline-wrap {
+  padding: 0.5rem 1.5rem 0;
+  line-height: 0.88;
+}
+
+.hero-headline {
+  font-family: var(--condensed);
+  font-weight: 900;
+  font-size: clamp(13vw, 17vw, 195px);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  display: block;
+  color: var(--cream);
+}
+
+
+/* STICKER */
+.sticker {
+  position: absolute;
+  z-index: 10;
+  font-family: var(--condensed);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.1;
+  padding: 10px 14px;
+  border-radius: 4px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+  cursor: default;
+}
+
+.sticker:hover { transform: scale(1.07) rotate(0deg) !important; }
+
+.sticker-photo {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.85);
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.sticker-proto:hover .sticker-photo {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.sticker-proto {
+  background: var(--yellow);
+  color: var(--black);
+  font-size: 1.2rem;
+  top: 38%;
+  right: 4%;
+  transform: rotate(2deg);
+  width: 260px;
+}
+
+.sticker-ux {
+  background: var(--pink);
+  color: var(--white);
+  font-size: 1.35rem;
+  top: 6%;
+  right: 4%;
+  transform: rotate(3deg);
+  width: 170px;
+}
+
+.sticker-fintech {
+  background: var(--cyan);
+  color: var(--black);
+  font-size: 1.3rem;
+  top: 6%;
+  left: 52%;
+  transform: rotate(-4deg);
+  width: 160px;
+}
+
+.sticker-fintech .sub {
+  font-family: var(--sans);
+  font-size: 0.56rem;
+  font-weight: 400;
+  text-transform: none;
+  display: block;
+  margin-top: 4px;
+  opacity: 0.65;
+  line-height: 1.4;
+}
+
+.sticker-ship {
+  background: #9b5de5;
+  color: var(--white);
+  font-size: 1.2rem;
+  top: 58%;
+  right: 4%;
+  transform: rotate(-2deg);
+  width: 185px;
+}
+
+/* WORK */
+.work-section {
+  background: var(--black);
+  padding: 5rem 2rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--condensed);
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+}
+
+.section-count {
+  font-size: 0.75rem;
+  color: rgba(240,235,227,0.3);
+  letter-spacing: 0.05em;
+}
+
+.case-list { display: flex; flex-direction: column; gap: 1px; background: rgba(255,255,255,0.07); }
+
+.case-row {
+  background: var(--black);
+  display: grid;
+  grid-template-columns: 72px 1fr 48px;
+  align-items: stretch;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.case-row:hover { background: #141412; }
+
+.case-row-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--condensed);
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(240,235,227,0.18);
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+
+.case-row-body { padding: 2rem 2rem; }
+
+.case-row-title {
+  font-family: var(--condensed);
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.case-row-desc {
+  font-size: 0.85rem;
+  color: var(--white);
+  line-height: 1.65;
+  max-width: 580px;
+}
+
+.case-row-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.case-tag {
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 2px;
+  color: rgba(240,235,227,0.38);
+}
+
+.case-row-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: rgba(240,235,227,0.2);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.case-row:hover .case-row-arrow {
+  color: var(--cream);
+  transform: translateX(3px);
+}
+
+/* ABOUT */
+.about-section {
+  background: var(--cream);
+  color: var(--black);
+  padding: 5rem 2rem;
+}
+
+.about-section .section-title { color: var(--black); }
+.about-section .section-header { border-bottom-color: rgba(0,0,0,0.1); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.about-big {
+  font-family: var(--condensed);
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 2rem;
+}
+
+.about-big em {
+  font-style: italic;
+  color: rgba(0,0,0,0.28);
+}
+
+.about-body p {
+  font-size: 0.9rem;
+  color: rgba(13,13,13,0.58);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.fact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.09);
+  font-size: 0.85rem;
+}
+
+.fact-row:first-child { border-top: 1px solid rgba(0,0,0,0.09); }
+.fact-key { color: rgba(13,13,13,0.38); }
+.fact-val { color: var(--black); font-weight: 500; text-align: right; }
+.fact-val a { color: var(--black); text-decoration: underline; text-underline-offset: 3px; }
+
+/* CONTACT */
+.contact-section {
+  background: var(--black);
+  padding: 7rem 2rem;
+  text-align: center;
+}
+
+.contact-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(240,235,227,0.28);
+  margin-bottom: 1.5rem;
+}
+
+.contact-headline {
+  font-family: var(--condensed);
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  margin-bottom: 3.5rem;
+}
+
+.contact-headline span { color: var(--yellow); }
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--condensed);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cream);
+  text-decoration: none;
+  border: 2px solid rgba(240,235,227,0.18);
+  padding: 1rem 2.5rem;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.contact-email:hover {
+  background: var(--cream);
+  color: var(--black);
+  border-color: var(--cream);
+}
+
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.74rem;
+  color: rgba(240,235,227,0.22);
+}
+
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { color: rgba(240,235,227,0.22); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(240,235,227,0.6); }
+
+/* CASE DETAIL */
+#case-detail-container { display: none; }
+
+.detail-page { display: none; min-height: 100vh; padding-top: 4.5rem; }
+.detail-page.active { display: block; }
+
+.detail-hero {
+  background: var(--black);
+  padding: 3rem 2rem 4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.detail-hero-inner { max-width: 1100px; margin: 0 auto; }
+
+.detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(240,235,227,0.3);
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 2.5rem;
+  transition: color 0.2s;
+}
+
+.detail-back:hover { color: var(--cream); }
+
+.detail-kicker {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 1rem;
+}
+
+.detail-title {
+  font-family: var(--condensed);
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  margin-bottom: 2rem;
+}
+
+.detail-meta { display: flex; gap: 3rem; flex-wrap: wrap; }
+.detail-meta .meta-label { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,235,227,0.28); margin-bottom: 4px; }
+.detail-meta .meta-val { font-size: 0.88rem; color: rgba(240,235,227,0.65); }
+
+.detail-body {
+  background: var(--cream);
+  color: var(--black);
+  padding: 4rem 2rem 5rem;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 5rem;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.detail-sidebar { position: sticky; top: 7rem; }
+
+.sidebar-h {
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(13,13,13,0.32);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.sidebar-p {
+  font-size: 0.82rem;
+  color: rgba(13,13,13,0.5);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+}
+
+.detail-sidebar .case-tag { border-color: rgba(0,0,0,0.13); color: rgba(13,13,13,0.45); }
+
+.detail-content h2 {
+  font-family: var(--condensed);
+  font-size: 1.55rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--black);
+  margin: 2.5rem 0 0.85rem;
+  letter-spacing: -0.01em;
+}
+
+.detail-content h2:first-child { margin-top: 0; }
+
+.detail-content p {
+  font-size: 0.93rem;
+  color: rgba(13,13,13,0.6);
+  line-height: 1.82;
+  margin-bottom: 1.1rem;
+}
+
+.detail-content strong { color: var(--black); font-weight: 500; }
+
+.detail-hl {
+  background: var(--black);
+  padding: 1.4rem 1.75rem;
+  margin: 1.75rem 0;
+  border-radius: 3px;
+}
+
+.detail-hl p {
+  font-family: var(--condensed);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--cream) !important;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 768px) {
+  .hero-headline { font-size: 17vw; }
+  .case-row { grid-template-columns: 50px 1fr 40px; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .detail-body { grid-template-columns: 1fr; }
+  .detail-sidebar { position: static; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <button class="nav-logo" onclick="showHome()">
+    <span class="nav-logo-name">Gabriel Reyes</span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#work" onclick="showHome()">Case Studies</a></li>
+    <li><a href="#about" onclick="showHome()">About</a></li>
+    <li><a href="#contact" onclick="showHome()">Contact</a></li>
+  </ul>
+</nav>
+
+<div id="main-content">
+  <div class="hero">
+    <div class="hero-headline-wrap">
+      <span class="hero-headline">Product</span>
+      <span class="hero-headline">Designer</span>
+    </div>
+    <div class="hero-top">
+      <p class="hero-intro">Hi, I built this this morning. I'm a designer who believes in using AI to prototype fast and move&nbsp;quickly.</p>
+      <div style="text-align:right">
+        <p class="hero-intro-right">Open to new opportunities in Melbourne &amp; remote.</p>
+        <a href="#contact" class="get-in-touch">Get in touch →</a>
+      </div>
+    </div>
+    <div class="sticker sticker-proto">
+      <img class="sticker-photo" src="me-and-baobao.jpg" alt="Me and Bao Bao" />
+      Photo of me and my dog<br>"Bao Bao"
+    </div>
+    <div class="sticker sticker-ux">User<br>Experi—ence<br>Design©</div>
+    <div class="sticker sticker-fintech">FinTech<br>Design<span class="sub">Share registries,<br>payments &amp; compliance</span></div>
+    <div class="sticker sticker-ship">Prototype<br>→ Ship<br>Same day</div>
+  </div>
+
+  <div class="work-section" id="work">
+    <div class="section-header">
+      <h2 class="section-title">Case Studies</h2>
+      <span class="section-count">3 case studies</span>
+    </div>
+    <div class="case-list">
+      <div class="case-row" onclick="showCase('payments')">
+        <div class="case-row-num">01</div>
+        <div class="case-row-body">
+          <div class="case-row-title">Dividend &amp; Distribution Payments</div>
+          <div class="case-row-desc">Automating the full payment cycle for companies and trusts paying thousands of shareholders — with all the tax withholding, component-level complexity, and regulatory compliance that entails.</div>
+          <div class="case-row-tags">
+            <span class="case-tag">FinTech</span><span class="case-tag">B2B SaaS</span><span class="case-tag">Complex workflows</span>
+          </div>
+        </div>
+        <div class="case-row-arrow">→</div>
+      </div>
+      <div class="case-row" onclick="showCase('aml')">
+        <div class="case-row-num">02</div>
+        <div class="case-row-body">
+          <div class="case-row-title">AML &amp; KYC</div>
+          <div class="case-row-desc">Replacing a manual, document-heavy identity verification process with an automated GreenID-powered flow — keeping share registries compliant without leaving the platform.</div>
+          <div class="case-row-tags">
+            <span class="case-tag">Compliance</span><span class="case-tag">API integration</span><span class="case-tag">Identity verification</span>
+          </div>
+        </div>
+        <div class="case-row-arrow">→</div>
+      </div>
+      <div class="case-row" onclick="showCase('capital')">
+        <div class="case-row-num">03</div>
+        <div class="case-row-body">
+          <div class="case-row-title">Capital Raising</div>
+          <div class="case-row-desc">A white-label application form builder letting companies self-serve capital raises — from minimum investment rules to payment reconciliation and receipts.</div>
+          <div class="case-row-tags">
+            <span class="case-tag">Form builder</span><span class="case-tag">White-label</span><span class="case-tag">Investor portal</span>
+          </div>
+        </div>
+        <div class="case-row-arrow">→</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-section" id="about">
+    <div class="section-header">
+      <h2 class="section-title">About</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <div class="about-big">I design for<br>the <em>messy</em><br>middle.</div>
+        <div class="about-body">
+          <p>Most FinTech products look clean until you get to the hard part — tax withholding rules, compliance workflows, edge cases that only show up when real money is on the line. That's where I work.</p>
+          <p>I spent years at Registry Direct designing features used by companies and trusts to manage shareholders, run capital raises, and stay compliant with Australian law. The users aren't always technical, but the stakes are always real.</p>
+          <p>Now I'm leaning into something new: what happens when a designer can prototype, test, and ship in the same morning? I'm using that speed to close the gap between idea and feedback — faster than ever.</p>
+        </div>
+      </div>
+      <div>
+        <div class="fact-row"><span class="fact-key">Based in</span><span class="fact-val">Melbourne, AU</span></div>
+        <div class="fact-row"><span class="fact-key">Speciality</span><span class="fact-val">FinTech · Product design</span></div>
+        <div class="fact-row"><span class="fact-key">Experience</span><span class="fact-val">Registry Direct + others</span></div>
+        <div class="fact-row"><span class="fact-key">LinkedIn</span><span class="fact-val"><a href="https://linkedin.com/in/gabrielreyes" target="_blank">gabrielreyes ↗</a></span></div>
+        <div class="fact-row"><span class="fact-key">Email</span><span class="fact-val"><a href="mailto:hello@gabrielreyes.com.au">hello@gabrielreyes.com.au</a></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-section" id="contact">
+    <div class="contact-eyebrow">Let's work together</div>
+    <div class="contact-headline">Got a problem<br>worth <span>solving?</span></div>
+    <a href="mailto:hello@gabrielreyes.com.au" class="contact-email">Say hello →</a>
+  </div>
+
+  <footer>
+    <span>© 2026 Gabriel Reyes</span>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/gabrielreyes" target="_blank">LinkedIn</a>
+      <a href="mailto:hello@gabrielreyes.com.au">Email</a>
+    </div>
+  </footer>
+</div>
+
+<!-- CASE STUDIES -->
+<div id="case-detail-container">
+
+  <div id="case-payments" class="detail-page">
+    <div class="detail-hero">
+      <div class="detail-hero-inner">
+        <button class="detail-back" onclick="showHome()">← Back to work</button>
+        <div class="detail-kicker">Case study · 01</div>
+        <h1 class="detail-title">Dividend &amp;<br>Distribution<br>Payments</h1>
+        <div class="detail-meta">
+          <div><div class="meta-label">Company</div><div class="meta-val">Registry Direct</div></div>
+          <div><div class="meta-label">Domain</div><div class="meta-val">FinTech · Share registry</div></div>
+          <div><div class="meta-label">Role</div><div class="meta-val">Product designer</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-body">
+      <div class="detail-sidebar">
+        <p class="sidebar-h">Context</p>
+        <p class="sidebar-p">Registry Direct is a share registry platform where companies and trusts self-manage their shareholder registers.</p>
+        <p class="sidebar-h">Tags</p>
+        <div class="case-row-tags"><span class="case-tag">FinTech</span><span class="case-tag">Payments</span><span class="case-tag">Tax logic</span></div>
+      </div>
+      <div class="detail-content">
+        <h2>What we were building</h2>
+        <p>Companies and trusts regularly pay shareholders a percentage of their earnings. The goal was to let clients calculate each individual payment per shareholder — automating a process that had previously required spreadsheets and manual bank transfers.</p>
+        <p>The calculation at its simplest: shares owned × price per unit = payment amount. But the real complexity lives in everything surrounding that formula.</p>
+        <div class="detail-hl"><p>A "payment cycle" spans the entire journey from setup to bank transfer — full of variables that differ per investor, per jurisdiction, and per entity type.</p></div>
+        <h2>Some of the challenges</h2>
+        <p>Tax withholding was a major complexity. How much to withhold depends on each shareholder's country of residence and whether they've supplied a TFN. If a shareholder doesn't have a bank account on file, do we send a cheque, or withhold entirely? All these variables had to be configurable by our clients.</p>
+        <p>The biggest challenge was extending this to trusts paying distributions. Trusts define each component of a payment separately, and each component carries different tax properties. We brought in Ernst &amp; Young to map every possible component — their output was essentially dense spreadsheets we had to translate into UI rules.</p>
+        <h2>Design and build process</h2>
+        <p>We started with company dividends only — a more contained problem with fewer unknowns. Once we'd worked through that end-to-end and felt confident in the model, we applied the learnings to trust distributions.</p>
+        <p>Since this was a high-stakes feature, we released it first to a designated set of clients to gather feedback and iron out edge cases. We also ran training sessions with major clients — which surfaced assumptions in our design we hadn't anticipated.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="case-aml" class="detail-page">
+    <div class="detail-hero">
+      <div class="detail-hero-inner">
+        <button class="detail-back" onclick="showHome()">← Back to work</button>
+        <div class="detail-kicker">Case study · 02</div>
+        <h1 class="detail-title">AML &amp;<br>KYC</h1>
+        <div class="detail-meta">
+          <div><div class="meta-label">Company</div><div class="meta-val">Registry Direct</div></div>
+          <div><div class="meta-label">Domain</div><div class="meta-val">Compliance · Identity</div></div>
+          <div><div class="meta-label">Role</div><div class="meta-val">Product designer</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-body">
+      <div class="detail-sidebar">
+        <p class="sidebar-h">Context</p>
+        <p class="sidebar-p">Under Australian law, companies and trusts must verify the identity of shareholders before accepting investments.</p>
+        <p class="sidebar-h">Tags</p>
+        <div class="case-row-tags"><span class="case-tag">Compliance</span><span class="case-tag">GreenID</span><span class="case-tag">API</span></div>
+      </div>
+      <div class="detail-content">
+        <h2>What we were building</h2>
+        <p>Registry Direct holds a database of individuals, companies, and trusts with all their associated details. Companies on the platform are legally required to identify potential risks before accepting investments — and the process was entirely manual, managed outside the platform via document submissions.</p>
+        <div class="detail-hl"><p>Our clients needed a streamlined way to verify new shareholders — without running a separate compliance workflow outside the platform.</p></div>
+        <h2>Some of the challenges</h2>
+        <p>We evaluated multiple providers before settling on GreenID by GBG — the most stable API with the best documentation. But GreenID only covers Australian and NZ investors, so we needed a fallback for international shareholders.</p>
+        <p>Given the low volume of international investors, we decided a manual verification path — scanned documents — was defensible, even though some clients pushed for a fully electronic solution. The cost of a second API for a small subset was hard to justify.</p>
+        <p>Verification failures added another design challenge. They can be legitimate (a name that genuinely doesn't match) or benign (a recently changed address). The design had to give clients context to make a judgement call, and a path to manually override or re-verify.</p>
+        <h2>Design and build process</h2>
+        <p>We deliberately waited on prototyping until we fully understood what the GreenID API could and couldn't do. Once we had a clear picture, we built prototypes and ran facilitated sessions with a select group of clients — surfacing edge cases around partial verification states we hadn't anticipated.</p>
+        <h2>Result</h2>
+        <p>Clients can now manage all AML and CTF requirements within Registry Direct prior to accepting investments — compliant with Australian law, with no need to manage multiple systems.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="case-capital" class="detail-page">
+    <div class="detail-hero">
+      <div class="detail-hero-inner">
+        <button class="detail-back" onclick="showHome()">← Back to work</button>
+        <div class="detail-kicker">Case study · 03</div>
+        <h1 class="detail-title">Capital<br>Raising</h1>
+        <div class="detail-meta">
+          <div><div class="meta-label">Company</div><div class="meta-val">Registry Direct</div></div>
+          <div><div class="meta-label">Domain</div><div class="meta-val">Investment · Form builder</div></div>
+          <div><div class="meta-label">Role</div><div class="meta-val">Product designer</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-body">
+      <div class="detail-sidebar">
+        <p class="sidebar-h">Context</p>
+        <p class="sidebar-p">Companies and trusts regularly release new investment offerings. Historically managed via PDF forms and manual payment coordination.</p>
+        <p class="sidebar-h">Tags</p>
+        <div class="case-row-tags"><span class="case-tag">Form builder</span><span class="case-tag">White-label</span><span class="case-tag">Investor UX</span></div>
+      </div>
+      <div class="detail-content">
+        <h2>What we were building</h2>
+        <p>Clients regularly release new investment offerings to the public. The old process: create a PDF describing the opportunity, attach a paper form, then manually reconcile investments with bank transfers.</p>
+        <p>Since our clients' investors were already on the platform, we had an opportunity to replace that workflow with a digital application form handling investment amounts, investor details, and payment in one place.</p>
+        <div class="detail-hl"><p>The goal: a white-label form builder where clients had full control — branding, rules, minimums — without needing us for every change request.</p></div>
+        <h2>Some of the challenges</h2>
+        <p>Our first iteration generated forms on demand — a client asked, we built it and shared the URL. This was unsustainable. Change requests were too frequent and too fiddly to manage at scale.</p>
+        <p>Handling existing investors was the more significant challenge. Most people investing in a raise were already shareholders. Allowing them to apply without creating duplicate records required careful identity matching logic, which shaped how we designed the investor-facing flow.</p>
+        <p>Payment management added complexity — clients needed to mark when money arrived, reissue invoices, and generate receipts. We had to design a back-office workflow that matched how these clients actually operated.</p>
+        <h2>Design and build process</h2>
+        <p>We ran extensive consultations before designing anything. The variety of ways different companies run capital raises was wider than we'd assumed — some required strict minimums, others soft; some collected payment upfront, others invoiced later.</p>
+        <p>That variety drove the decision to build a form builder rather than fixed templates. We used Rubix as the underlying framework and iterated heavily on the builder UI — the first version was powerful but intimidating. Subsequent rounds focused on reducing cognitive load for first-time users.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showCase(id) {
+  document.getElementById('main-content').style.display = 'none';
+  document.getElementById('case-detail-container').style.display = 'block';
+  document.querySelectorAll('.detail-page').forEach(el => el.classList.remove('active'));
+  document.getElementById('case-' + id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+function showHome() {
+  document.getElementById('case-detail-container').style.display = 'none';
+  document.getElementById('main-content').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+</script>
+</body>
+</html>

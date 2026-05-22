@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Gabo monogram">
+  
+  <circle cx="60" cy="60" r="58" fill="#111318"></circle>
+  
+  <g fill="#F1ECE0">
+    
+    <rect x="30" y="30" width="12" height="60"></rect>
+    
+    <rect x="30" y="30" width="48" height="12"></rect>
+    
+    <rect x="30" y="78" width="48" height="12"></rect>
+    
+    <rect x="66" y="55" width="12" height="35"></rect>
+    
+    <rect x="54" y="55" width="24" height="10"></rect>
+  </g>
+</svg>

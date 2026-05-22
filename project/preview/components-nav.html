@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Top navigation</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 0; min-height: 160px; box-sizing: border-box; background: var(--paper); display: flex; align-items: flex-start; }
+  .nav { width: 100%; padding: 22px 36px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--rule); background: rgba(241,236,224,0.8); backdrop-filter: blur(12px); }
+  .mark { display: flex; align-items: center; gap: 10px; font-family: var(--font-sans); font-weight: 500; font-size: 18px; letter-spacing: -0.01em; }
+  .dot { color: var(--blue); }
+  .links { display: flex; gap: 26px; }
+  .links a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); text-decoration: none; }
+  .links a.active { color: var(--ink); }
+  .links a:hover { color: var(--blue); }
+  .cta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--ink); padding: 8px 14px; border-radius: 999px; text-decoration: none; }
+  .below { padding: 30px 36px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+</style>
+</head>
+<body>
+  <div style="width:100%;">
+    <nav class="nav">
+      <div class="mark">gabo<span class="dot">.</span></div>
+      <div class="links">
+        <a href="#" class="active">Work</a>
+        <a href="#">CV</a>
+        <a href="#">Writing</a>
+        <a href="#">Contact</a>
+      </div>
+      <a class="cta" href="#">Email me ↗</a>
+    </nav>
+    <div class="below">backdrop blur 12px · paper @ 80% · hairline rule below</div>
+  </div>
+</body>
+</html>

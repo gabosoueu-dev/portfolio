@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Logo &amp; monogram</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 0; min-height: 220px; box-sizing: border-box; display: grid; grid-template-columns: 1fr 1fr 1fr; }
+  .cell { display: flex; align-items: center; justify-content: center; min-height: 220px; padding: 28px; box-sizing: border-box; position: relative; }
+  .cell .l { position: absolute; bottom: 12px; left: 16px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; }
+  .a { background: var(--paper); color: var(--ink); border-right: 1px solid var(--rule); }
+  .b { background: var(--ink); color: var(--paper); }
+  .c { background: var(--blue); color: var(--paper); }
+  img { display: block; max-width: 80%; height: auto; }
+  .invert { filter: invert(1); }
+</style>
+</head>
+<body>
+  <div class="cell a"><img src="../assets/logo.svg" alt="Gabo logo"/><span class="l">on paper</span></div>
+  <div class="cell b"><img src="../assets/logo.svg" class="invert" alt="Gabo logo"/><span class="l">on ink</span></div>
+  <div class="cell c"><img src="../assets/logo.svg" class="invert" alt="Gabo logo"/><span class="l">on blue</span></div>
+</body>
+</html>

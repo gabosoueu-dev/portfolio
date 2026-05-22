@@ -1,0 +1,256 @@
+/* ------------------------------------------------------------------
+   Gabo Portfolio — design tokens
+   Type-first editorial. Block colour for imagery. Lots of whitespace.
+
+   FONT: Inter (Google Fonts) for everything, paired with JetBrains Mono
+   for labels, captions and tabular numerals.
+   ------------------------------------------------------------------ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---------- COLOUR ---------- */
+  /* Paper & ink */
+  --paper:        #F1ECE0;   /* warm off-white, primary bg */
+  --paper-2:      #E8E2D2;   /* slightly deeper paper, for inset blocks */
+  --paper-3:      #FBF8F1;   /* lifted paper, modal/card surface */
+  --ink:          #111318;   /* near-black, primary fg */
+  --ink-2:        #3A3D44;   /* secondary fg, body de-emphasis */
+  --ink-3:        #6B6E76;   /* tertiary, captions/meta */
+  --rule:         rgba(17, 19, 24, 0.12);  /* hairline divider */
+  --rule-strong:  rgba(17, 19, 24, 0.32);
+
+  /* Block colours — used as full-bleed grounds, never as accents inside type */
+  --blue:         #2B3CE0;   /* primary block */
+  --blue-deep:    #1F2BB0;   /* pressed/darker variant */
+  --yellow:       #FFDA70;   /* secondary block */
+  --yellow-deep:  #E6B83A;
+  --sky:          #1FAFE8;   /* tertiary, only inside compositions */
+  --teal:         #3FC4C5;   /* tertiary, only inside compositions */
+
+  /* Foreground colour to use on each block ground */
+  --on-blue:      #F1ECE0;
+  --on-yellow:    #111318;
+  --on-sky:       #111318;
+  --on-teal:      #111318;
+  --on-paper:     #111318;
+  --on-ink:       #F1ECE0;
+
+  /* Semantic (used very sparingly — system is mostly mono) */
+  --link:         var(--ink);
+  --link-hover:   var(--blue);
+  --focus-ring:   var(--blue);
+
+  /* ---------- TYPE ---------- */
+  --font-sans:  'Inter', 'Helvetica Neue', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Type scale — display sizes are intentionally large */
+  --t-mono:      0.6875rem;  /* 11px  — UPPERCASE labels */
+  --t-meta:      0.8125rem;  /* 13px  — captions, meta */
+  --t-body-sm:   0.9375rem;  /* 15px */
+  --t-body:      1.0625rem;  /* 17px  — primary body */
+  --t-body-lg:   1.1875rem;  /* 19px  — long-form reading */
+  --t-lead:      1.5rem;     /* 24px  — intro/lede paragraphs */
+  --t-h4:        1.75rem;    /* 28px */
+  --t-h3:        2.25rem;    /* 36px */
+  --t-h2:        3.5rem;     /* 56px */
+  --t-h1:        6rem;       /* 96px  — case study titles */
+  --t-display:   10rem;      /* 160px — hero homepage */
+
+  --lh-tight:    1.02;
+  --lh-snug:     1.15;
+  --lh-body:     1.6;
+  --lh-loose:    1.75;
+
+  --tr-display:  -0.025em;
+  --tr-heading:  -0.015em;
+  --tr-body:     0;
+  --tr-mono:     0.08em;
+
+  /* ---------- SPACING (4px base) ---------- */
+  --s-1:   4px;
+  --s-2:   8px;
+  --s-3:   12px;
+  --s-4:   16px;
+  --s-6:   24px;
+  --s-8:   32px;
+  --s-12:  48px;
+  --s-16:  64px;
+  --s-24:  96px;
+  --s-32:  128px;
+  --s-48:  192px;
+  --s-64:  256px;
+
+  /* Layout */
+  --col-narrow:  560px;   /* legal-pad measure ~58 chars */
+  --col-text:    640px;   /* primary long-form measure */
+  --col-wide:    1080px;  /* section content */
+  --gutter:      32px;
+
+  /* ---------- RADII ---------- */
+  --r-0:  0px;
+  --r-1:  2px;
+  --r-pill: 999px;
+
+  /* ---------- BORDERS / SHADOWS ---------- */
+  --border-hair:   1px solid var(--rule);
+  --border-rule:   1px solid var(--ink);
+  /* The system has no elevation shadows. Depth = whitespace + blocks. */
+  --shadow-none:   none;
+  /* The one offset block "shadow" (used on case-study tile hover) */
+  --shadow-block:  8px 8px 0 0 var(--ink);
+
+  /* ---------- MOTION ---------- */
+  --ease-std:    cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast:    120ms;
+  --dur-base:    180ms;
+  --dur-slow:    280ms;
+}
+
+/* ------------------------------------------------------------------
+   Semantic element styles — apply to plain HTML.
+   ------------------------------------------------------------------ */
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--tr-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: var(--tr-heading);
+  line-height: var(--lh-tight);
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--t-h1); letter-spacing: var(--tr-display); }
+h2 { font-size: var(--t-h2); }
+h3 { font-size: var(--t-h3); }
+h4 { font-size: var(--t-h4); }
+
+p {
+  margin: 0 0 var(--s-6) 0;
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  max-width: var(--col-text);
+  text-wrap: pretty;
+}
+
+.lede, .intro {
+  font-size: var(--t-lead);
+  line-height: var(--lh-snug);
+  color: var(--ink);
+  max-width: var(--col-text);
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-thickness var(--dur-fast) var(--ease-std),
+              text-decoration-color var(--dur-fast) var(--ease-std),
+              color var(--dur-fast) var(--ease-std);
+}
+a:hover {
+  color: var(--link-hover);
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--link-hover);
+}
+
+.label, .mono {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  letter-spacing: var(--tr-mono);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  color: var(--ink-3);
+  letter-spacing: 0.02em;
+}
+
+hr, .rule {
+  border: 0;
+  border-top: var(--border-hair);
+  margin: var(--s-12) 0;
+}
+
+::selection {
+  background: var(--blue);
+  color: var(--on-blue);
+}
+
+/* Display class — for very large hero numbers/letters */
+.display {
+  font-size: var(--t-display);
+  font-weight: 500;
+  letter-spacing: var(--tr-display);
+  line-height: 0.95;
+}
+
+/* Block grounds — slap on a section to make it a full-bleed colour block */
+.block-blue   { background: var(--blue);   color: var(--on-blue); }
+.block-yellow { background: var(--yellow); color: var(--on-yellow); }
+.block-sky    { background: var(--sky);    color: var(--on-sky); }
+.block-teal   { background: var(--teal);   color: var(--on-teal); }
+.block-ink    { background: var(--ink);    color: var(--on-ink); }
+.block-paper  { background: var(--paper);  color: var(--on-paper); }
+
+/* Buttons (pill, ink) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 14px 22px 14px 24px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-sans);
+  font-size: var(--t-body-sm);
+  font-weight: 500;
+  border: 0;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--dur-fast) var(--ease-std),
+              color var(--dur-fast) var(--ease-std),
+              opacity var(--dur-fast) var(--ease-std);
+}
+.btn:hover { background: var(--blue); color: var(--on-blue); }
+.btn:active { opacity: 0.9; }
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+.btn--ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Mono-tag chip */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  padding: 6px 10px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  letter-spacing: var(--tr-mono);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}

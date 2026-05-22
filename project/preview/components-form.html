@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Form inputs</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 30px 40px; min-height: 280px; box-sizing: border-box; display: grid; grid-template-columns: 1fr 1fr; gap: 24px 36px; align-items: start; }
+  label { display: block; }
+  .l { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 8px; display: block; }
+  input, textarea {
+    width: 100%; box-sizing: border-box;
+    background: transparent; border: 0; border-bottom: 1px solid var(--ink);
+    padding: 10px 0; font-family: var(--font-sans); font-size: 17px; color: var(--ink);
+    outline: none;
+  }
+  input::placeholder, textarea::placeholder { color: var(--ink-3); }
+  input:focus, textarea:focus { border-bottom-color: var(--blue); border-bottom-width: 2px; padding-bottom: 9px; }
+  .focused { border-bottom: 2px solid var(--blue); padding-bottom: 9px; }
+  .helper { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); margin-top: 6px; letter-spacing: 0.04em; }
+  textarea { min-height: 64px; resize: none; }
+</style>
+</head>
+<body>
+  <label>
+    <span class="l">Name</span>
+    <input type="text" placeholder="Your name" value="Gabo"/>
+  </label>
+  <label>
+    <span class="l">Email · focused</span>
+    <input class="focused" type="email" placeholder="you@domain.com"/>
+    <div class="helper">I'll reply within 48h.</div>
+  </label>
+  <label style="grid-column: 1 / -1;">
+    <span class="l">Message</span>
+    <textarea placeholder="Tell me about the project, the team, and the timeline."></textarea>
+  </label>
+</body>
+</html>

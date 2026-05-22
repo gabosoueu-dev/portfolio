@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Block compositions</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 0; min-height: 260px; box-sizing: border-box; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .cell { min-height: 260px; position: relative; overflow: hidden; }
+  .l { position: absolute; bottom: 12px; left: 14px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* 1: blue full-bleed with small paper offset block */
+  .c1 { background: var(--blue); }
+  .c1 .x { position: absolute; top: 28px; left: 28px; width: 72px; height: 72px; background: var(--paper); }
+  .c1 .l { color: var(--paper); }
+
+  /* 2: yellow with ink block in lower right */
+  .c2 { background: var(--yellow); }
+  .c2 .x { position: absolute; bottom: 36px; right: 28px; width: 84px; height: 84px; background: var(--ink); }
+  .c2 .l { color: var(--ink); }
+
+  /* 3: paper with offset blue + yellow overlap */
+  .c3 { background: var(--paper); border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); }
+  .c3 .a { position: absolute; top: 30px; left: 26px; width: 110px; height: 140px; background: var(--blue); }
+  .c3 .b { position: absolute; bottom: 22px; right: 24px; width: 100px; height: 100px; background: var(--yellow); }
+  .c3 .l { color: var(--ink); }
+
+  /* 4: ink with sky block */
+  .c4 { background: var(--ink); }
+  .c4 .x { position: absolute; top: 30px; right: 26px; width: 90px; height: 130px; background: var(--sky); }
+  .c4 .l { color: var(--paper); }
+</style>
+</head>
+<body>
+  <div class="cell c1"><div class="x"></div><span class="l">01 / cover</span></div>
+  <div class="cell c2"><div class="x"></div><span class="l">02 / divider</span></div>
+  <div class="cell c3"><div class="a"></div><div class="b"></div><span class="l">03 / overlap</span></div>
+  <div class="cell c4"><div class="x"></div><span class="l">04 / contact</span></div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Heading scale</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 32px 40px; min-height: 320px; box-sizing: border-box; }
+  .row { display: grid; grid-template-columns: 90px 1fr; gap: 28px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--rule); }
+  .row:first-child { border-top: 0; }
+  .row .label { color: var(--ink-3); white-space: nowrap; }
+  .h1 { font-size: 56px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.02; }
+  .h2 { font-size: 36px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.05; }
+  .h3 { font-size: 24px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; }
+  .h4 { font-size: 18px; font-weight: 500; letter-spacing: -0.005em; }
+</style>
+</head>
+<body>
+  <div class="row"><span class="label">H1 / 96</span><span class="h1">Selected work</span></div>
+  <div class="row"><span class="label">H2 / 56</span><span class="h2">Experience &amp; what I built</span></div>
+  <div class="row"><span class="label">H3 / 36</span><span class="h3">Onboarding redesign</span></div>
+  <div class="row"><span class="label">H4 / 28</span><span class="h4">Product lead — 2024 to present</span></div>
+</body>
+</html>

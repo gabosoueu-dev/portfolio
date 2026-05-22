@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Tone of voice</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 30px 40px; min-height: 260px; box-sizing: border-box; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .col h6 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 12px 0; font-weight: 400; }
+  .good { border-left: 2px solid var(--blue); padding-left: 14px; }
+  .bad  { border-left: 2px solid var(--rule-strong); padding-left: 14px; }
+  .line { font-size: 15px; line-height: 1.45; color: var(--ink); margin-bottom: 12px; }
+  .bad .line { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--rule-strong); }
+  .bad .line .strike { }
+</style>
+</head>
+<body>
+  <div class="col">
+    <h6>Do — first person, blunt</h6>
+    <div class="good">
+      <div class="line">hi, I'm Gabo — I design products.</div>
+      <div class="line">Activation went up 18%.</div>
+      <div class="line">2024 — present · product lead.</div>
+    </div>
+  </div>
+  <div class="col">
+    <h6>Don't — buzzwords, hype</h6>
+    <div class="bad">
+      <div class="line">Welcome to my portfolio! 🚀</div>
+      <div class="line">Synergistic, world-class designer.</div>
+      <div class="line">Passionate multi-disciplinary creative.</div>
+    </div>
+  </div>
+</body>
+</html>

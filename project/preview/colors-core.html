@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Core palette</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 0; min-height: 220px; box-sizing: border-box; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .swatch { padding: 20px 22px; display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; box-sizing: border-box; }
+  .swatch .name { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .swatch .hex  { font-family: var(--font-mono); font-size: 13px; }
+  .paper  { background: var(--paper); color: var(--ink); border-right: 1px solid var(--rule); }
+  .ink    { background: var(--ink); color: var(--paper); }
+  .blue   { background: var(--blue); color: var(--paper); }
+  .yellow { background: var(--yellow); color: var(--ink); }
+</style>
+</head>
+<body>
+  <div class="swatch paper"><span class="name">paper</span><span class="hex">#F1ECE0</span></div>
+  <div class="swatch ink"><span class="name">ink</span><span class="hex">#111318</span></div>
+  <div class="swatch blue"><span class="name">blue</span><span class="hex">#2B3CE0</span></div>
+  <div class="swatch yellow"><span class="name">yellow</span><span class="hex">#F4C736</span></div>
+</body>
+</html>

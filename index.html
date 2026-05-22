@@ -1162,16 +1162,31 @@ html[data-hero-treatment="grid"] .case-hero-ink::before {
 
 <script>
 // ── SPA navigation ──────────────────────────────────────────────────────────
-function setView(id) {
+function setView(id, pushState) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('is-active'));
   const el = document.getElementById(id);
   if (el) el.classList.add('is-active');
   window.scrollTo({ top: 0, behavior: 'instant' });
-  // Sync time on newly-visible banners
   syncAllBanners();
+  if (pushState !== false) {
+    const hash = id === 'view-home' ? '' : '#' + id.replace('view-', '');
+    history.pushState({ id }, '', location.pathname + hash);
+  }
 }
 function showHome()      { setView('view-home'); }
 function showCase(slug)  { setView('view-' + slug); }
+
+window.addEventListener('popstate', (e) => {
+  const id = e.state && e.state.id ? e.state.id : (location.hash ? 'view-' + location.hash.slice(1) : 'view-home');
+  setView(id, false);
+});
+
+// Route on initial load
+(function () {
+  const hash = location.hash.slice(1);
+  const id = hash ? 'view-' + hash : 'view-home';
+  setView(id, false);
+})();
 
 // ── Live time (Torquay = Australia/Melbourne) ───────────────────────────────
 function getLocalTime() {

@@ -1085,16 +1085,8 @@ html[data-hero-treatment="grid"] .case-hero-ink::before {
     <p class="case-plain-p">We started by mapping what engineers were actually doing in V1, the sequence of steps, the decisions they were making, the mental model they were working from. That became the foundation for the canvas. We weren't designing from scratch; we were making an existing process visible.</p>
     <p class="case-plain-p">Early prototypes focused on the source configuration flow, the entry point for everything else. If analysts couldn't connect a data source confidently, nothing downstream mattered. We tested with analysts at client institutions and found that the hardest part wasn't the technical fields, it was not knowing whether the connection had worked. Feedback and validation states became a significant design focus.</p>
 
-    <figure class="case-plain-figure">
-      <image-slot id="case-feedzai-4" placeholder="Connection test — success and error confirmation states." shape="rect" style="aspect-ratio: 16 / 9; width: 100%;"></image-slot>
-    </figure>
-
     <p class="case-plain-p">The canvas itself went through multiple rounds of iteration. Simple linear workflows were intuitive from the start. Branching logic, if/else conditions, parallel sources, layered transformations, was harder to represent without overwhelming first-time users. We introduced progressive disclosure, surfacing advanced options only when needed, so the default experience stayed approachable without sacrificing power for complex use cases.</p>
     <p class="case-plain-p">Testing and simulation were built directly into the canvas. Before publishing a workflow, analysts could run it against sample data and see exactly which nodes fired, what data passed through, and where failures occurred. This was the trust mechanism. It gave analysts the confidence to publish without needing an engineer to sign off.</p>
-
-    <figure class="case-plain-figure">
-      <image-slot id="case-feedzai-5" placeholder="Simulation panel — sample run with node-level results." shape="rect" style="aspect-ratio: 16 / 9; width: 100%;"></image-slot>
-    </figure>
 
     <p class="case-plain-p">The result was a platform where business analysts at some of the world's largest financial institutions could go from a compliance requirement to a live, automated verification workflow, without engineering involvement for every change.</p>
 

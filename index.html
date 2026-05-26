@@ -271,7 +271,7 @@ html[data-typeface="geometric"] .contact-skills { letter-spacing: -0.055em; }
 .hero-block-mark {
   position: absolute;
   top: 36px;
-  right: 220px;
+  right: 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -293,9 +293,11 @@ html[data-typeface="geometric"] .contact-skills { letter-spacing: -0.055em; }
   margin-top: 2px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 4px;
   font-family: var(--font-sans);
   font-size: 14px;
+  font-weight: 700;
   line-height: 1.3;
   color: var(--tw-on-hero);
 }
@@ -1107,54 +1109,6 @@ html[data-hero-treatment="grid"] .case-hero-ink::before {
 <!-- ============================================================
      TWEAKS PANEL
      ============================================================ -->
-<button class="tweaks-toggle" id="tweaks-toggle" aria-label="Open tweaks panel">Tweaks</button>
-<aside class="tweaks-panel" id="tweaks-panel" role="dialog" aria-label="Tweaks">
-  <header class="tweaks-head">
-    <div class="tweaks-title">Tweaks<span class="tweaks-title-dot">.</span></div>
-    <button class="tweaks-close" id="tweaks-close" aria-label="Close tweaks">✕</button>
-  </header>
-
-  <section class="tweaks-section">
-    <div class="tweaks-section-label">Palette</div>
-    <div class="tweaks-swatches" data-key="palette">
-      <button class="tweaks-swatch" data-val="sunny" title="Sunny: yellow + blue">
-        <span class="sw-fill" style="background:#ffda70"></span>
-        <span class="sw-dot" style="background:#2B3CE0"></span>
-      </button>
-      <button class="tweaks-swatch" data-val="sky" title="Sky: blue + yellow">
-        <span class="sw-fill" style="background:#475acb"></span>
-        <span class="sw-dot" style="background:#ffda70"></span>
-      </button>
-      <button class="tweaks-swatch" data-val="cream" title="Cream: restrained">
-        <span class="sw-fill" style="background:#E8E2D2"></span>
-        <span class="sw-dot" style="background:#111318"></span>
-      </button>
-      <button class="tweaks-swatch" data-val="bold" title="Bold: ink + yellow">
-        <span class="sw-fill" style="background:#111318"></span>
-        <span class="sw-dot" style="background:#ffda70"></span>
-      </button>
-    </div>
-  </section>
-
-  <section class="tweaks-section">
-    <div class="tweaks-section-label">Hero treatment</div>
-    <div class="tweaks-icons" data-key="heroTreatment">
-      <button class="tweaks-icon" data-val="solid" title="Solid block"><span class="icon-fill"></span></button>
-      <button class="tweaks-icon" data-val="corner" title="Paper corner"><span class="icon-fill"></span></button>
-      <button class="tweaks-icon" data-val="stripes" title="Stripes"><span class="icon-fill"></span></button>
-      <button class="tweaks-icon" data-val="grid" title="Dotted grid"><span class="icon-fill"></span></button>
-    </div>
-  </section>
-
-  <section class="tweaks-section">
-    <div class="tweaks-section-label">Type voice</div>
-    <div class="tweaks-radio" data-key="typeface">
-      <button data-val="modern" title="Inter">Modern</button>
-      <button data-val="serif" title="Fraunces">Serif</button>
-      <button data-val="geometric" title="Space Grotesk">Geometric</button>
-    </div>
-  </section>
-</aside>
 
 <script>
 // ── SPA navigation ──────────────────────────────────────────────────────────
@@ -1249,45 +1203,6 @@ setInterval(syncAllBanners, 30 * 1000);
   setInterval(fetchOnce, 15 * 60 * 1000);
 })();
 
-// ── Tweaks panel ────────────────────────────────────────────────────────────
-(function () {
-  const defaults = { palette: 'sunny', heroTreatment: 'solid', typeface: 'modern' };
-  const state = Object.assign({}, defaults);
-  const $panel  = document.getElementById('tweaks-panel');
-  const $toggle = document.getElementById('tweaks-toggle');
-  const $close  = document.getElementById('tweaks-close');
-
-  function apply() {
-    document.documentElement.setAttribute('data-palette',        state.palette);
-    document.documentElement.setAttribute('data-hero-treatment', state.heroTreatment);
-    document.documentElement.setAttribute('data-typeface',       state.typeface);
-    $panel.querySelectorAll('[data-key]').forEach(group => {
-      const key = group.getAttribute('data-key');
-      group.querySelectorAll('[data-val]').forEach(btn => {
-        btn.setAttribute('aria-pressed', btn.getAttribute('data-val') === state[key] ? 'true' : 'false');
-      });
-    });
-  }
-
-  $panel.querySelectorAll('[data-key]').forEach(group => {
-    const key = group.getAttribute('data-key');
-    group.querySelectorAll('[data-val]').forEach(btn => {
-      btn.addEventListener('click', () => { state[key] = btn.getAttribute('data-val'); apply(); });
-    });
-  });
-
-  $close.addEventListener('click', () => {
-    $panel.classList.remove('is-open');
-    $toggle.classList.add('is-visible');
-  });
-  $toggle.addEventListener('click', () => {
-    $panel.classList.add('is-open');
-    $toggle.classList.remove('is-visible');
-  });
-
-  apply();
-  setTimeout(() => { $toggle.classList.add('is-visible'); }, 800);
-})();
 </script>
 </body>
 </html>

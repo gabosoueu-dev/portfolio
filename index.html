@@ -461,31 +461,46 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
   position: absolute;
   top: 40px;
   right: 64px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
+  z-index: 10;
 }
-.contact-photo-widget img {
-  width: 120px;
-  height: 120px;
+.contact-photo-sticker {
+  position: relative;
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  padding: 10px 14px;
+  border-radius: 4px;
+  cursor: default;
+  user-select: none;
+  transform: rotate(2deg);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.contact-photo-sticker:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+.contact-photo-img {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.85);
+  width: 220px;
+  height: 220px;
   object-fit: cover;
   border-radius: 8px;
-  display: block;
-  border: 3px solid rgba(241,236,224,0.2);
-  transition: transform var(--dur-slow) var(--ease-std), border-color var(--dur-slow) var(--ease-std);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
-.contact-photo-widget:hover img {
-  transform: scale(1.04) rotate(1deg);
-  border-color: var(--yellow);
-}
-.contact-photo-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(241,236,224,0.4);
-  text-align: center;
+.contact-photo-sticker:hover .contact-photo-img {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
 }
 @media (max-width: 720px) {
   .contact-photo-widget { display: none; }
@@ -819,8 +834,10 @@ html[data-hero-treatment="grid"] .case-hero-ink::before {
   <!-- Contact -->
   <section class="contact" id="contact">
     <div class="contact-photo-widget">
-      <img src="images/me-and-baobao.jpg" alt="Gabe and Bao Bao" />
-      <span class="contact-photo-label">Bao Bao & me</span>
+      <div class="contact-photo-sticker">
+        Photo of me and my dog<br>"Bao Bao"
+        <img class="contact-photo-img" src="images/me-and-baobao.jpg" alt="Gabe and Bao Bao" />
+      </div>
     </div>
     <div class="contact-inner">
       <p class="contact-skills">end-to-end product design <span class="contact-dot">/</span> rapid prototyping <span class="contact-dot">/</span> wireframes <span class="contact-dot">/</span> concept design <span class="contact-dot">/</span> ux design <span class="contact-dot">/</span> ui design <span class="contact-dot">/</span> design systems <span class="contact-dot">/</span> accessibility</p>

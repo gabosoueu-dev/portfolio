@@ -388,7 +388,7 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
    CASE STUDIES LIST
    ========================================================= */
 .case-list {
-  padding: 40px 32px 64px 32px;
+  padding: 40px 32px 64px 72px;
 }
 @media (max-width: 720px) { .case-list { padding: 24px 16px 40px 16px; } }
 .case-list-title {
@@ -399,6 +399,8 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
   color: var(--ink);
   margin: 0 0 24px 0;
   line-height: 1;
+  max-width: 1100px;
+  white-space: nowrap;
 }
 .case-list-items {
   list-style: none;
@@ -437,6 +439,7 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
 .contact-inner {
   max-width: 1280px; margin: 0 auto;
   padding: 112px 32px 128px 32px;
+  display: flex; align-items: flex-end; gap: 48px;
 }
 @media (max-width: 720px) { .contact-inner { padding: 72px 24px 88px 24px; } }
 .contact-skills {
@@ -459,7 +462,9 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
    ========================================================= */
 .contact-photo-widget {
   z-index: 10;
-  margin-top: 4px;
+  flex-shrink: 0;
+  align-self: flex-end;
+  padding-bottom: 8px;
 }
 .contact-photo-sticker {
   position: relative;
@@ -484,7 +489,8 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
 }
 .contact-photo-img {
   position: absolute;
-  top: calc(100% + 12px);
+  bottom: calc(100% + 12px);
+  top: auto;
   left: 50%;
   transform: translateX(-50%) scale(0.85);
   width: 220px;
@@ -515,7 +521,7 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
 }
 @media (max-width: 720px) { .site-footer { padding: 28px 24px; } }
 .footer-mark {
-  font-family: var(--font-sans); font-weight: 500;
+  font-family: var(--font-sans); font-weight: 900;
   font-size: 17px; letter-spacing: -0.015em;
 }
 .footer-meta {
@@ -811,12 +817,6 @@ html[data-hero-treatment="grid"] .case-hero-ink::before {
           </a>
         </div>
         <div class="hero-block-square--half"></div>
-        <div class="contact-photo-widget">
-          <div class="contact-photo-sticker">
-            Bao Bao & me
-            <img class="contact-photo-img" src="images/me-and-baobao.jpg" alt="Gabe and Bao Bao" />
-          </div>
-        </div>
       </div>
       <div class="hero-block-statement">
         <p>Hi, I'm Gabe. I believe in prototyping fast with AI and putting ideas in front of people. This portfolio? Built it this morning!</p>
@@ -843,9 +843,12 @@ html[data-hero-treatment="grid"] .case-hero-ink::before {
   </section>
 
   <footer class="site-footer">
-    <div class="footer-mark">gabriel reyes<span class="brand-dot">.</span></div>
-    <div class="footer-meta">
-      <span>© 2026 Gabriel Reyes</span>
+    <div class="footer-mark">also / product manager / scrum master / personal finance / dogs / hayfever every september / surfer / black mirror / built a few campervans / mayo over ketchup</div>
+    <div class="contact-photo-widget">
+      <div class="contact-photo-sticker">
+        Bao Bao &amp; me
+        <img class="contact-photo-img" src="images/me-and-baobao.jpg" alt="Gabe and Bao Bao" />
+      </div>
     </div>
   </footer>
 </div>

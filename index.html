@@ -432,6 +432,7 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
   background: var(--tw-contact-bg);
   color: var(--tw-contact-fg);
   margin-top: 64px;
+  position: relative;
 }
 .contact-inner {
   max-width: 1280px; margin: 0 auto;
@@ -451,6 +452,43 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
 .contact-dot { color: var(--tw-contact-dot); }
 @media (max-width: 720px) {
   .contact-skills { font-size: clamp(22px, 7vw, 44px); letter-spacing: -0.03em; }
+}
+
+/* =========================================================
+   CONTACT PHOTO WIDGET
+   ========================================================= */
+.contact-photo-widget {
+  position: absolute;
+  top: 40px;
+  right: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.contact-photo-widget img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  border: 3px solid rgba(241,236,224,0.2);
+  transition: transform var(--dur-slow) var(--ease-std), border-color var(--dur-slow) var(--ease-std);
+}
+.contact-photo-widget:hover img {
+  transform: scale(1.04) rotate(1deg);
+  border-color: var(--yellow);
+}
+.contact-photo-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(241,236,224,0.4);
+  text-align: center;
+}
+@media (max-width: 720px) {
+  .contact-photo-widget { display: none; }
 }
 
 /* =========================================================
@@ -780,6 +818,10 @@ html[data-hero-treatment="grid"] .case-hero-ink::before {
 
   <!-- Contact -->
   <section class="contact" id="contact">
+    <div class="contact-photo-widget">
+      <img src="images/me-and-baobao.jpg" alt="Gabe and Bao Bao" />
+      <span class="contact-photo-label">Me & Bao Bao</span>
+    </div>
     <div class="contact-inner">
       <p class="contact-skills">end-to-end product design <span class="contact-dot">/</span> rapid prototyping <span class="contact-dot">/</span> wireframes <span class="contact-dot">/</span> concept design <span class="contact-dot">/</span> ux design <span class="contact-dot">/</span> ui design <span class="contact-dot">/</span> design systems <span class="contact-dot">/</span> accessibility</p>
     </div>

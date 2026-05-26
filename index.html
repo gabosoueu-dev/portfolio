@@ -458,10 +458,8 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
    CONTACT PHOTO WIDGET
    ========================================================= */
 .contact-photo-widget {
-  position: absolute;
-  bottom: 40px;
-  right: 64px;
   z-index: 10;
+  margin-top: 4px;
 }
 .contact-photo-sticker {
   position: relative;
@@ -486,7 +484,7 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
 }
 .contact-photo-img {
   position: absolute;
-  bottom: calc(100% + 12px);
+  top: calc(100% + 12px);
   left: 50%;
   transform: translateX(-50%) scale(0.85);
   width: 220px;
@@ -813,6 +811,12 @@ html[data-hero-treatment="grid"] .case-hero-ink::before {
           </a>
         </div>
         <div class="hero-block-square--half"></div>
+        <div class="contact-photo-widget">
+          <div class="contact-photo-sticker">
+            Bao Bao & me
+            <img class="contact-photo-img" src="images/me-and-baobao.jpg" alt="Gabe and Bao Bao" />
+          </div>
+        </div>
       </div>
       <div class="hero-block-statement">
         <p>Hi, I'm Gabe. I believe in prototyping fast with AI and putting ideas in front of people. This portfolio? Built it this morning!</p>
@@ -833,12 +837,6 @@ html[data-hero-treatment="grid"] .case-hero-ink::before {
 
   <!-- Contact -->
   <section class="contact" id="contact">
-    <div class="contact-photo-widget">
-      <div class="contact-photo-sticker">
-        Bao Bao & me
-        <img class="contact-photo-img" src="images/me-and-baobao.jpg" alt="Gabe and Bao Bao" />
-      </div>
-    </div>
     <div class="contact-inner">
       <p class="contact-skills">end-to-end product design <span class="contact-dot">/</span> rapid prototyping <span class="contact-dot">/</span> wireframes <span class="contact-dot">/</span> concept design <span class="contact-dot">/</span> ux design <span class="contact-dot">/</span> ui design <span class="contact-dot">/</span> design systems <span class="contact-dot">/</span> accessibility</p>
     </div>

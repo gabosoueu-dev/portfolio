@@ -249,8 +249,9 @@ html[data-typeface="geometric"] .contact-skills { letter-spacing: -0.055em; }
     padding: 16px 20px 12px 20px;
   }
   .site-banner-name { grid-area: name; }
-  .site-banner-loc  { grid-area: loc; }
+  .site-banner-loc  { grid-area: loc; justify-self: end; }
   .site-banner-role { grid-area: role; justify-self: start; }
+  .site-banner-loc .loc-name { display: none; }
 }
 
 /* =========================================================
@@ -376,7 +377,7 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
 @media (max-width: 720px) {
   .hero-block-wrap { padding: 0 16px 16px 16px; }
   .hero-block { aspect-ratio: 4 / 5; max-height: calc(100vh - 80px); }
-  .hero-block-mark { top: 20px; right: 20px; gap: 12px; }
+  .hero-block-mark { top: 20px; right: auto; left: 20px; gap: 12px; }
   .hero-block-square { width: 200px; height: 10px; }
   .hero-block-square--half { width: 200px; height: 3px; margin: 2px 0 0; }
   .hero-block-contact { font-size: 12px; }
@@ -390,7 +391,9 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
 .case-list {
   padding: 40px 32px 64px 72px;
 }
-@media (max-width: 720px) { .case-list { padding: 24px 16px 40px 16px; } }
+@media (max-width: 720px) {
+  .case-list { padding: 24px 16px 40px 16px; }
+}
 .case-list-title {
   font-family: var(--font-sans);
   font-weight: 900;
@@ -423,7 +426,7 @@ html[data-palette="sky"][data-hero-treatment="grid"] .hero-block-deco {
 }
 .case-list-items button:hover { opacity: 0.55; }
 @media (max-width: 720px) {
-  .case-list-title { font-size: 22px; }
+  .case-list-title { font-size: 22px; white-space: normal; line-height: 1.2; }
   .case-list-items button { font-size: 18px; }
 }
 
